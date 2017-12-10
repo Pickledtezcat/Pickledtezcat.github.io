@@ -1,11 +1,99 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
-  <head>    
-    <title>Numlocked</title>
-  </head>  
-  <body id=body>
-  <p> This is the main page. Sub pages will be accessible from here. </p>
-  
-  <script src="main_script.js"></script>
-  </body>  
+<head>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <style>
+        body {
+            background-color: crimson;
+        }
+        
+        canvas {
+            display: block;
+            margin: auto;
+            height:100%;
+            width: auto;
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            image-rendering: pixelated;
+        }
+    
+        div {
+            height: 100%;
+            width: 100%;
+            margin: auto;
+            background-color: crimson;
+        }
+    </style>
+</head>
+    <script src="pixi.min.js"></script>
+<body>     
+    
+    <div id=pixi_hook>
+    <canvas id="pixi_canvas"  width="480" height="800"></canvas>
+    </div>
+    
+    <script type="text/javascript">
+        var pixi_hook = document.getElementById("pixi_hook");
+
+        var pixi_canvas = document.getElementById("pixi_canvas");   
+        var app = new PIXI.Application(480, 800, {view: pixi_canvas, backgroundColor: 0x42f4ee});        
+        
+        PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
+        var sprite = PIXI.Sprite.fromImage('images/test_char.png');
+
+        // Set the initial position
+        sprite.anchor.set(0.5);
+        sprite.x = app.renderer.width / 2;
+        sprite.y = app.renderer.height / 2;
+
+        // Opt-in to interactivity
+        sprite.interactive = true;
+
+        // Shows hand cursor
+        sprite.buttonMode = true;
+
+        // Pointers normalize touch and mouse
+        sprite.on('pointerdown', onClick);
+
+        // Alternatively, use the mouse & touch events:
+        // sprite.on('click', onClick); // mouse-only
+        // sprite.on('tap', onClick); // touch-only
+
+        app.stage.addChild(sprite);
+
+        function onClick () {
+            sprite.x += 5;
+            enterFullscreen()
+        }
+        
+        function enterFullscreen() {
+            document.fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.documentElement.webkitRequestFullScreen;
+
+        function requestFullscreen(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        }
+
+        if (document.fullscreenEnabled) {
+            requestFullscreen(pixi_hook);
+        }
+        
+        }
+                
+    </script>
+    
+    
+</body>
 </html>
+
+
+<body>
+     
