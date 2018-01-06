@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Parallax Scrolling Demo</title>
+	<style>
+      body { background-color: #000000; }
+      canvas { background-color: #222222; }
+    </style>
+  </head>
+  <body onload="init();">
+  	<div align="center">
+    	<canvas id="game-canvas" width="512" height="384"></canvas>
+  	</div>
+	<script src="pixi.min.js" type="text/javascript"></script>
+	<script src="side_scroll_script.js" type="text/javascript"></script>
+	<script>
+		function init() {
+	  		console.log("init() successfully called.");
+			side_scroll()					
+			console.log("added stage");
+		}
+		
+		
+  	</script>
+	  
+	  
+  </body>
+</html>
