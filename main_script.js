@@ -2,24 +2,24 @@ var main_body = document.getElementById("body");
 
 var sub_button = document.createElement("button");
 main_body.appendChild(sub_button)
-sub_button.innerHTML = "pixi demo."
+sub_button.innerHTML = "Go to sub page."
 
-sub_button.addEventListener('click', go_to_pixi_demo, false);
+sub_button.addEventListener('click', go_to_sub_page, false);
 
 
-function go_to_pixi_demo() {
-	window.location.assign("pixi_demo/index.html");
+function go_to_sub_page() {
+	window.location.assign("brownbearinfo.html");
 	
 }
 
 var bell_button = document.createElement("button");
 main_body.appendChild(bell_button)
-bell_button.innerHTML = "side scroller."
+bell_button.innerHTML = "Play The Bell Jar."
 
-bell_button.addEventListener('click', go_to_side_scroller, false);
+bell_button.addEventListener('click', go_to_bell_jar, false);
 
 
-function go_to_side_scroller() {
-	window.location.assign("side_scroller/index.html");
+function go_to_bell_jar() {
+	window.location.assign("bell_jar.html");
 	
 }
