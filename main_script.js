@@ -2,13 +2,13 @@ var main_body = document.getElementById("body");
 
 var sub_button = document.createElement("button");
 main_body.appendChild(sub_button)
-sub_button.innerHTML = "Go to sub page."
+sub_button.innerHTML = "Treasure Hunt!."
 
 sub_button.addEventListener('click', go_to_sub_page, false);
 
 
 function go_to_sub_page() {
-	window.location.assign("brownbearinfo.html");
+	window.location.assign("treasure_hunt.html");
 	
 }
 
