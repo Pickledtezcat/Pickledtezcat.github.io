@@ -1,13 +1,12 @@
 var treasure_map;
 var old_position;
-var tolerance = 15;
+var tolerance = 20;
 var score = 0;
 var all_markers = [];
 var my_position = null;
 var init = false;
 
 function initMap() {
-
   treasure_map = new google.maps.Map(document.getElementById('treasure_map'), {
   zoom: 19,
   center: {lat: 35.855460054052756, lng: 128.64783699078816}
@@ -18,7 +17,6 @@ old_position = new google.maps.Marker({
   map: treasure_map,
   icon: "happy.png"
 });
-
 
 
 if(navigator.geolocation) {
