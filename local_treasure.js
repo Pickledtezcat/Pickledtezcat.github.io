@@ -5,27 +5,31 @@ var score = 0;
 var all_markers = [];
 var my_position = null;
 var init = false;
+var default_position = new google.maps.LatLng(35.855460054052756, 128.64783699078816);
 
 function initMap() {
   treasure_map = new google.maps.Map(document.getElementById('treasure_map'), {
   zoom: 19,
-  center: {lat: 35.855460054052756, lng: 128.64783699078816}
+  center: default_position;
 });
 
 old_position = new google.maps.Marker({
-  position: {lat: 35.855460054052756, lng: 128.64783699078816},
+  position: default_position,
   map: treasure_map,
   icon: "happy.png"
+
 });
+set_my_position(default_position)
+
+// if(navigator.geolocation) {
+//     navigator.geolocation.watchPosition(set_my_position);
+// }
+// else {
+//     alert("Geolocation doesn't work in your browser");
+// }
+}
 
 
-if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(set_my_position);
-}
-else {
-    alert("Geolocation doesn't work in your browser");
-}
-}
 
 function set_my_position(get_my_position){
   my_position = get_my_position;
@@ -99,7 +103,7 @@ function collect_gold(origin) {
   for(var i=0; i < all_markers.length; i++){
 
     if (all_markers[i].active === true) {
-      var distance = google.maps.geometry.spherical.computeDistanceBetween(origin, all_markers[i].marker.getPosition());
+      var distance = 10000;
       if( distance < tolerance ){
         score += 10;
         alert("Found the gold" + "\n" + score + "points!");
