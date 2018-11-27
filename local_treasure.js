@@ -5,28 +5,27 @@ var score = 0;
 var all_markers = [];
 var my_position = null;
 var init = false;
-var default_position = new google.maps.LatLng(35.855460054052756, 128.64783699078816);
 
 function initMap() {
   treasure_map = new google.maps.Map(document.getElementById('treasure_map'), {
   zoom: 19,
-  center: default_position;
+  center: {lat: 35.855460054052756, lng: 128.64783699078816}
 });
 
 old_position = new google.maps.Marker({
-  position: default_position,
+  position: {lat: 35.855460054052756, lng: 128.64783699078816},
   map: treasure_map,
   icon: "happy.png"
 
 });
-set_my_position(default_position)
 
-// if(navigator.geolocation) {
-//     navigator.geolocation.watchPosition(set_my_position);
-// }
-// else {
-//     alert("Geolocation doesn't work in your browser");
-// }
+  if(navigator.geolocation) {
+      navigator.geolocation.watchPosition(set_my_position);
+  }
+  else {
+      alert("Geolocation doesn't work in your browser");
+      set_my_position({lat: 35.855460054052756, lng: 128.64783699078816})
+  }
 }
 
 
