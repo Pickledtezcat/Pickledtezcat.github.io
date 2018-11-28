@@ -69,7 +69,6 @@ button:hover {
   background-color: #008CBA;
   color: black;
   cursor: pointer;
-  font-size: 2em;
 }
 
 input[type=text], select {

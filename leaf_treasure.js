@@ -1,6 +1,6 @@
 var default_position = [35.855460054052756, 128.64783699078816]
 var mymap = L.map('mapid').setView(default_position, 27);
-var all_markers  = [];
+var all_markers = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
