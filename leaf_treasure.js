@@ -30,9 +30,8 @@ get_button.addEventListener('click', activate_get, false);
 
 function activate_get() {
 	data = get_data(game_key);
-  console.log(data)
-  all_markers = data;
-  add_markers()
+  console.log(data);
+  add_markers(all_markers);
 }
 
 var clear_button = document.createElement("button");
@@ -72,7 +71,8 @@ function get_data(game_key) {
   {
       if(pResponse.success)
         var my_data = JSON.parse(pResponse.data);
-          alert(my_data);
+        alert(my_data);
+        return my_data;
   });
 }
 
@@ -109,9 +109,9 @@ var flag_icon = L.icon({
     popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
 });
 
-function add_markers() {
-  for (var i = 0; i < all_markers.length; i++) {
-      marker = all_markers[i];
+function add_markers(marker_list) {
+  for (var i = 0; i < marker_list.length; i++) {
+      marker = marker_list[i];
       location = marker.location;
       icon = marker.icon;
       var place_icon = gold_icon;
