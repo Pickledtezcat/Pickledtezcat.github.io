@@ -14,7 +14,7 @@ var game_data = {test_data: "Hello world", emoji:emoji};
 
 clear_keys(game_key)
 
-fuction clear_keys (game_key) {
+function clear_keys (game_key) {
   GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key);
 }
 
