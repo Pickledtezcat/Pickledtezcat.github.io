@@ -1,4 +1,3 @@
-var main_body = document.getElementById("body");
 var default_position = [35.855460054052756, 128.64783699078816]
 var mymap = L.map('mapid').setView(default_position, 27);
 
@@ -8,13 +7,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var marker = L.marker(default_position).addTo(mymap);
 
+var leaf_body = document.getElementById("body");
+
 var game_key = "testing";
 var emoji = document.getElementById('icon_to_use').value;
 var game_data = {test_data: "Hello world", emoji:emoji};
 
 var action_button = document.createElement("button");
 action_button.className = "button";
-main_body.appendChild(action_button);
+leaf_body.appendChild(action_button);
 action_button.innerHTML = "click to add data!";
 action_button.addEventListener('click', activate, false);
 
