@@ -5,7 +5,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
 
-var marker = L.marker(default_position).addTo(mymap);
+initiate_map();
 
 var leaf_body = document.getElementById("body");
 
@@ -77,3 +77,25 @@ function get_data(game_key) {
           alert(my_data);
   });
 }
+
+function initiate_map () {
+  var marker = L.marker(default_position).addTo(mymap);
+
+  var circle = L.circle(default_position, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+  }).addTo(mymap);
+}
+
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(mymap);
+}
+
+mymap.on('click', onMapClick);
