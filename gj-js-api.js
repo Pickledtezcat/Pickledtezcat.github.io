@@ -54,7 +54,7 @@ GJAPI.sGameKey   = "2ec7894fedb0c0b2163f0554799c41c9";     // # change this too
 GJAPI.bAutoLogin = true;   // automatically log in users on Game Jolt
 if(GJAPI.iGameID === 0 || GJAPI.sGameKey === "") alert("Game ID or Game Key missing!");
 
-GJAPI.sAPI      = "http://gamejolt.com/api/game/v1";
+GJAPI.sAPI      = "https://gamejolt.com/api/game/v1";
 GJAPI.sLogName  = "[Game Jolt API]";
 GJAPI.iLogStack = 20;
 
