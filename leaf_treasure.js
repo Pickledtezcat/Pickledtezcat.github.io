@@ -114,12 +114,14 @@ function add_markers(marker_list) {
       marker = marker_list[i];
       location = marker.location;
       icon = marker.icon;
+      console.log(marker, location, icon)
+
       var place_icon = gold_icon;
       if (icon == "flag") {
         place_icon = flag_icon
       };
 
-      var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
+      // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
 
     }
 }
