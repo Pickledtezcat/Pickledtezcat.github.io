@@ -7,3 +7,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 var marker = L.marker(default_position).addTo(mymap);
+
+var game_key = "testing";
+var game_data = {test_data: "Hello world"};
+
+GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, pCallback)
+
+function check_success() {
+  console.log("success")
+}
