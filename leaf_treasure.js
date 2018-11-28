@@ -12,7 +12,17 @@ var game_key = "testing";
 var emoji = document.getElementById('icon_to_use').value;
 var game_data = {test_data: "Hello world", emoji:emoji};
 
-clear_keys(game_key)
+var action_button = document.createElement("button");
+action_button.className = "button";
+action_button.appendChild(sub_button);
+action_button.innerHTML = "click to add data!";
+action_button.addEventListener('click', activate, false);
+
+function activate() {
+	send_data(game_key, game_data);
+
+}
+
 
 function clear_keys (game_key) {
   GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key);
