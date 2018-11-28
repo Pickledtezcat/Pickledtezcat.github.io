@@ -122,7 +122,7 @@ function add_markers(marker_list) {
         place_icon = flag_icon
       }
 
-      var new_marker = L.marker(location).addTo(mymap);
+      var new_marker = L.marker([location.lat, location.long]).addTo(mymap);
       }
 }
 
