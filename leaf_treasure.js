@@ -19,7 +19,6 @@ set_button.addEventListener('click', activate_set, false);
 
 function activate_set() {
 	send_data(game_key, all_markers);
-
 }
 
 var get_button = document.createElement("button");
@@ -29,8 +28,7 @@ get_button.innerHTML = "click to get data!";
 get_button.addEventListener('click', activate_get, false);
 
 function activate_get() {
-	data = get_data(game_key);
-  add_markers(data);
+	get_data(game_key);
 }
 
 var clear_button = document.createElement("button");
@@ -70,7 +68,11 @@ function get_data(game_key) {
   {
       if(pResponse.success)
         var my_data = JSON.parse(pResponse.data);
-        return my_data;
+        if (my_data == undefined) {
+          alert("data unreadable")
+        } else {
+          add_markers(my_data);
+        }
   });
 }
 
@@ -108,10 +110,6 @@ var flag_icon = L.icon({
 });
 
 function add_markers(marker_list) {
-  if (marker_list == undefined) {
-    alert("empty list");
-  } else {
-
   for (var i = 0; i < marker_list.length; i++) {
       marker = marker_list[i];
       location = marker.location;
@@ -124,7 +122,6 @@ function add_markers(marker_list) {
       var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
 
     }
-  }
 }
 
 function onMapClick(e) {
