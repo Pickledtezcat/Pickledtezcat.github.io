@@ -117,9 +117,9 @@ function add_markers(marker_list) {
       icon = marker.icon;
       console.log(marker, location, icon)
 
-      var place_icon = gold_icon;
-      if (icon == "flag") {
-        place_icon = flag_icon
+      // var place_icon = gold_icon;
+      // if (icon == "flag") {
+      //   place_icon = flag_icon
       };
 
       // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
