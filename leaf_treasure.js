@@ -17,5 +17,5 @@ var game_data = {test_data: "Hello world", emoji:emoji};
 var game_data = GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse)
 {
     if(pResponse.success)
-        alert(pResponse.data);
+        alert(pResponse.data.test_data);
 });
