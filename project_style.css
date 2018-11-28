@@ -3,9 +3,9 @@
    background-color: lightblue;
    text-align: center;
    margin: auto;
-   width: 50%;
+   width: 80%;
    padding: 10px;
-   font-size: 30px;
+   font-size: 2.5em;
 }
 
 h1 {
@@ -59,7 +59,7 @@ button:hover {
   background-color: #008CBA;
   color: black;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 2.5em;
 }
 
 input[type=text], select {
@@ -70,5 +70,5 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 2.5em;
 }

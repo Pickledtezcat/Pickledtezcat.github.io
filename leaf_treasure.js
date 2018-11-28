@@ -42,7 +42,7 @@ leaf_body.appendChild(clear_button);
 clear_button.innerHTML = "clear data!";
 clear_button.addEventListener('click', activate_clear, false);
 
-function activate_get() {
+function activate_clear() {
 	data = clear_keys(game_key);
 }
 
