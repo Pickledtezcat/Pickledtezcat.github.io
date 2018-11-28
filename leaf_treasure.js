@@ -19,7 +19,7 @@ set_button.addEventListener('click', activate_set, false);
 
 function activate_set() {
 	send_data(game_key, all_markers);
-}
+};
 
 var get_button = document.createElement("button");
 get_button.className = "button";
@@ -29,7 +29,7 @@ get_button.addEventListener('click', activate_get, false);
 
 function activate_get() {
 	get_data(game_key);
-}
+};
 
 var clear_button = document.createElement("button");
 clear_button.className = "button";
@@ -41,7 +41,7 @@ function clear_keys (game_key) {
   GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse) {
     alert(pResponse.message);
     });
-}
+};
 
 function check_data_keys () {
   GJAPI.DataStoreGetKeys (GJAPI.DATA_STORE_GLOBAL, function(pResponse)
@@ -51,7 +51,7 @@ function check_data_keys () {
     for(var i = 0; i < pResponse.keys.length; ++i)
         console.info(pResponse.keys[i].key);
   });
-}
+};
 
 function send_data(game_key, some_data) {
 
@@ -61,7 +61,7 @@ function send_data(game_key, some_data) {
       if(pResponse.success)
           alert(pResponse.message);
   });
-}
+};
 
 function get_data(game_key) {
   GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse)
@@ -73,9 +73,9 @@ function get_data(game_key) {
         } else {
           console.log(my_data)
           // add_markers(my_data);
-        }
+        };
   });
-}
+};
 
 function initiate_map () {
   var marker = L.marker(default_position).addTo(mymap);
@@ -86,7 +86,7 @@ function initiate_map () {
     fillOpacity: 0.5,
     radius: 500
   }).addTo(mymap);
-}
+};
 
 // var gold_icon = L.icon({
 //     iconUrl: 'images/gold.png',
@@ -117,6 +117,7 @@ function add_markers(marker_list) {
       location = marker.location;
       icon = marker.icon;
       console.log(marker, location, icon);
+  };
 
       // var place_icon = gold_icon;
       // if (icon == "flag") {
@@ -124,7 +125,7 @@ function add_markers(marker_list) {
       // };
 
       // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
-}
+};
 
 function onMapClick(e) {
   var popup = L.popup();
@@ -137,6 +138,6 @@ function onMapClick(e) {
   var marker_data = {location:e.latlng, icon:emoji};
   all_markers.push(marker_data);
 
-}
+};
 
 mymap.on('click', onMapClick);
