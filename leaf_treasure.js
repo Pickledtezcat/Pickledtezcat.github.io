@@ -124,8 +124,8 @@ function add_markers(marker_list) {
 
       // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
 
-    };
-};
+    }
+}
 
 function onMapClick(e) {
   var popup = L.popup();
