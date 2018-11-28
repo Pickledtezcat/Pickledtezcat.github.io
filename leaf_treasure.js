@@ -14,9 +14,8 @@ var game_data = {test_data: "Hello world", emoji:emoji};
 
 // GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, check_success);
 // var data_keys = GJAPI.DataStoreGetKeys (GJAPI.DATA_STORE_GLOBAL, check_success);
-var game_data = GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, check_success);
-console.log(game_data)
-
-function check_success() {
-  console.log("success")
-}
+var game_data = GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse)
+{
+    if(pResponse.success)
+        alert(pResponse.data);
+});
