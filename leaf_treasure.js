@@ -28,7 +28,7 @@ function activate_set() {
 var get_button = document.createElement("button");
 get_button.className = "button";
 leaf_body.appendChild(get_button);
-get_button.innerHTML = "click to add data!";
+get_button.innerHTML = "click to get data!";
 get_button.addEventListener('click', activate_get, false);
 
 function activate_get() {
@@ -36,11 +36,19 @@ function activate_get() {
   console.log(data)
 }
 
+var clear_button = document.createElement("button");
+clear_button.className = "button";
+leaf_body.appendChild(clear_button);
+clear_button.innerHTML = "clear data!";
+clear_button.addEventListener('click', activate_clear, false);
+
+function activate_get() {
+	data = clear_keys(game_key);
+}
 
 function clear_keys (game_key) {
   GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key);
 }
-
 
 function check_data_keys () {
   GJAPI.DataStoreGetKeys (GJAPI.DATA_STORE_GLOBAL, function(pResponse)

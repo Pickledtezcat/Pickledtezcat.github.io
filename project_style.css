@@ -52,12 +52,14 @@ button {
   transition-duration: 0.4s;
   display: inline-block;
   cursor: pointer;
+  font-size: 30px;
 }
 
 button:hover {
   background-color: #008CBA;
   color: black;
   cursor: pointer;
+  font-size: 30px;
 }
 
 input[type=text], select {
@@ -68,4 +70,5 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 30px;
 }
