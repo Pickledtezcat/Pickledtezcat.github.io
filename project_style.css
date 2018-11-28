@@ -34,17 +34,6 @@ p {
 }
 
 button {
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
-
-button:hover {
-  background-color: white;
-  color: black;
-}
-
-button {
-  display:block
   background-color: blue;
   border: none;
   color: white;
@@ -52,4 +41,12 @@ button {
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  display:block;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
 }
