@@ -80,12 +80,12 @@ function get_data(game_key) {
 function initiate_map () {
   var marker = L.marker(default_position).addTo(mymap);
 
-  // var circle = L.circle(default_position, {
-  //   color: 'red',
-  //   fillColor: '#f03',
-  //   fillOpacity: 0.5,
-  //   radius: 500
-  // }).addTo(mymap);
+  var circle = L.circle(default_position, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 20
+  }).addTo(mymap);
 }
 
 
