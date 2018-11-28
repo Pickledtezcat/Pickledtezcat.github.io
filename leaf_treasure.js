@@ -111,11 +111,12 @@ function initiate_map () {
 // });
 
 function add_markers(marker_list) {
-  for (var i = 0; i < marker_list.length; i++) {
+  var i;
+  for (i = 0; i < marker_list.length; i++) {
       marker = marker_list[i];
       location = marker.location;
       icon = marker.icon;
-      console.log(marker, location, icon)
+      console.log([marker, location, icon]);
 
       // var place_icon = gold_icon;
       // if (icon == "flag") {
@@ -123,8 +124,6 @@ function add_markers(marker_list) {
       // };
 
       // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
-
-    }
 }
 
 function onMapClick(e) {
