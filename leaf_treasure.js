@@ -11,17 +11,29 @@ var leaf_body = document.getElementById("body");
 
 var game_key = "testing";
 var emoji = document.getElementById('icon_to_use').value;
+emoji.className = "select";
 var game_data = {test_data: "Hello world", emoji:emoji};
 
-var action_button = document.createElement("button");
-action_button.className = "button";
-leaf_body.appendChild(action_button);
-action_button.innerHTML = "click to add data!";
-action_button.addEventListener('click', activate, false);
+var set_button = document.createElement("button");
+set_button.className = "button";
+leaf_body.appendChild(set_button);
+set_button.innerHTML = "click to add data!";
+set_button.addEventListener('click', activate_set, false);
 
-function activate() {
+function activate_set() {
 	send_data(game_key, game_data);
 
+}
+
+var get_button = document.createElement("button");
+get_button.className = "button";
+leaf_body.appendChild(get_button);
+get_button.innerHTML = "click to add data!";
+get_button.addEventListener('click', activate_get, false);
+
+function activate_get() {
+	data = get_data(game_key);
+  console.log(data)
 }
 
 
