@@ -8,11 +8,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var marker = L.marker(default_position).addTo(mymap);
 
+}
+
 var game_key = "testing";
-var game_data = {test_data: "Hello world"};
+var emoji = document.getElementById('icon_to_use').value;
+var game_data = {test_data: "Hello world", emoji:emoji};
+
 
 GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, check_success)
 
 function check_success() {
   console.log("success")
-}
