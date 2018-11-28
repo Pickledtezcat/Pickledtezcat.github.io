@@ -12,10 +12,37 @@ var game_key = "testing";
 var emoji = document.getElementById('icon_to_use').value;
 var game_data = {test_data: "Hello world", emoji:emoji};
 
-// GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, check_success);
-// var data_keys = GJAPI.DataStoreGetKeys (GJAPI.DATA_STORE_GLOBAL, check_success);
-var game_data = GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse)
-{
-    if(pResponse.success)
-        alert(pResponse.data.test_data);
-});
+clear_keys(game_key)
+
+fuction clear_keys (game_key) {
+  GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key);
+}
+
+
+function check_data_keys () {
+  GJAPI.DataStoreGetKeys (GJAPI.DATA_STORE_GLOBAL, function(pResponse)
+  {
+    if(!pResponse.keys) return;
+
+    for(var i = 0; i < pResponse.keys.length; ++i)
+        console.info(pResponse.keys[i].key);
+  });
+}
+
+function send_data(game_key, some_data) {
+  var data = JSON.stringify(some_data);
+  GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, data, function(pResponse)
+  {
+      if(pResponse.success)
+          alert(pResponse.message);
+  });
+}
+
+function get_data(game_key) {
+  GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse)
+  {
+      if(pResponse.success)
+        var my_data = JSON.parse(pResponse.data);
+          alert(my_data);
+  });
+}
