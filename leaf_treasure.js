@@ -1,5 +1,6 @@
 var default_position = [35.855460054052756, 128.64783699078816]
 var mymap = L.map('mapid').setView(default_position, 27);
+var all_markers  = [];
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -7,47 +8,43 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 initiate_map();
 
-var leaf_body = document.getElementById("body");
-
+var body_map = document.getElementById("body_map");
 var game_key = "testing";
-var emoji = document.getElementById('icon_to_use').value;
-emoji.className = "select";
-var game_data = {test_data: "Hello world", emoji:emoji};
 
 var set_button = document.createElement("button");
 set_button.className = "button";
-leaf_body.appendChild(set_button);
+body_map.appendChild(set_button);
 set_button.innerHTML = "click to add data!";
 set_button.addEventListener('click', activate_set, false);
 
 function activate_set() {
-	send_data(game_key, game_data);
+	send_data(game_key, all_markers);
 
 }
 
 var get_button = document.createElement("button");
 get_button.className = "button";
-leaf_body.appendChild(get_button);
+body_map.appendChild(get_button);
 get_button.innerHTML = "click to get data!";
 get_button.addEventListener('click', activate_get, false);
 
 function activate_get() {
 	data = get_data(game_key);
   console.log(data)
+  all_markers = data;
+  add_markers()
 }
 
 var clear_button = document.createElement("button");
 clear_button.className = "button";
-leaf_body.appendChild(clear_button);
+body_map.appendChild(clear_button);
 clear_button.innerHTML = "clear data!";
-clear_button.addEventListener('click', activate_clear, false);
-
-function activate_clear() {
-	data = clear_keys(game_key);
-}
+clear_button.addEventListener('click', clear_keys, false);
 
 function clear_keys (game_key) {
-  GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key);
+  GJAPI.DataStoreRemove(GJAPI.DATA_STORE_GLOBAL, game_key, function(pResponse) {
+    alert(pResponse.message);
+    });
 }
 
 function check_data_keys () {
@@ -61,6 +58,7 @@ function check_data_keys () {
 }
 
 function send_data(game_key, some_data) {
+
   var data = JSON.stringify(some_data);
   GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, data, function(pResponse)
   {
@@ -81,21 +79,62 @@ function get_data(game_key) {
 function initiate_map () {
   var marker = L.marker(default_position).addTo(mymap);
 
-  var circle = L.circle(default_position, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-  }).addTo(mymap);
+  // var circle = L.circle(default_position, {
+  //   color: 'red',
+  //   fillColor: '#f03',
+  //   fillOpacity: 0.5,
+  //   radius: 500
+  // }).addTo(mymap);
 }
 
-var popup = L.popup();
+var gold_icon = L.icon({
+    iconUrl: 'gold.png',
+    shadowUrl: 'gold_shadow.png',
+
+    iconSize:     [32, 32], // size of the icon
+    shadowSize:   [34, 58], // size of the shadow
+    iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+    shadowAnchor: [16, 58],  // the same for the shadow
+    popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
+});
+
+var flag_icon = L.icon({
+    iconUrl: 'flag.png',
+    shadowUrl: 'flag_shadow.png',
+
+    iconSize:     [32, 32], // size of the icon
+    shadowSize:   [34, 58], // size of the shadow
+    iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+    shadowAnchor: [16, 58],  // the same for the shadow
+    popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
+});
+
+function add_markers() {
+  for (var i = 0; i < all_markers.length; i++) {
+      marker = all_markers[i];
+      location = marker.location;
+      icon = marker.icon;
+      var place_icon = gold_icon;
+      if (icon == "flag") {
+        place_icon = flag_icon
+      };
+
+      var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
+
+  }
+}
 
 function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
+  var popup = L.popup();
+  popup
+      .setLatLng(e.latlng)
+      .setContent("marker to be added at " + e.latlng.toString())
+      .openOn(mymap);
+
+  var emoji = document.getElementById('icon_to_use').value;
+  var marker_data = {location:e.latlng, icon:emoji};
+  all_markers.push(marker_data);
+
 }
 
 mymap.on('click', onMapClick);

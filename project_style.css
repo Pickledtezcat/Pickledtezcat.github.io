@@ -5,7 +5,16 @@
    margin: auto;
    width: 80%;
    padding: 10px;
-   font-size: 2.5em;
+   font-size: 2em;
+}
+
+body_map {
+  color: black;
+  background-color: lightblue;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  font-size: 2em;
 }
 
 h1 {
@@ -36,6 +45,7 @@ p {
    margin: auto;
    width: 50%;
    padding: 10px;
+   font-size: 2em;
 }
 
 button {
@@ -52,14 +62,14 @@ button {
   transition-duration: 0.4s;
   display: inline-block;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 2em;
 }
 
 button:hover {
   background-color: #008CBA;
   color: black;
   cursor: pointer;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 input[type=text], select {
@@ -70,5 +80,5 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size: 2.5em;
+    font-size: 2em;
 }
