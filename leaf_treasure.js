@@ -88,8 +88,8 @@ function initiate_map () {
 }
 
 var gold_icon = L.icon({
-    iconUrl: 'gold.png',
-    shadowUrl: 'gold_shadow.png',
+    iconUrl: '/gold.png',
+    shadowUrl: '/gold_shadow.png',
 
     iconSize:     [32, 32], // size of the icon
     shadowSize:   [34, 58], // size of the shadow
@@ -99,8 +99,8 @@ var gold_icon = L.icon({
 });
 
 var flag_icon = L.icon({
-    iconUrl: 'flag.png',
-    shadowUrl: 'flag_shadow.png',
+    iconUrl: '/flag.png',
+    shadowUrl: '/flag_shadow.png',
 
     iconSize:     [32, 32], // size of the icon
     shadowSize:   [34, 58], // size of the shadow
