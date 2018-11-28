@@ -71,7 +71,8 @@ function get_data(game_key) {
         if (my_data == undefined) {
           alert("data unreadable")
         } else {
-          add_markers(my_data);
+          console.log(my_data)
+          // add_markers(my_data);
         }
   });
 }
@@ -79,12 +80,12 @@ function get_data(game_key) {
 function initiate_map () {
   var marker = L.marker(default_position).addTo(mymap);
 
-  // var circle = L.circle(default_position, {
-  //   color: 'red',
-  //   fillColor: '#f03',
-  //   fillOpacity: 0.5,
-  //   radius: 500
-  // }).addTo(mymap);
+  var circle = L.circle(default_position, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+  }).addTo(mymap);
 }
 
 // var gold_icon = L.icon({
