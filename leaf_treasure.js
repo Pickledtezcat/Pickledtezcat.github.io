@@ -80,35 +80,35 @@ function get_data(game_key) {
 function initiate_map () {
   var marker = L.marker(default_position).addTo(mymap);
 
-  var circle = L.circle(default_position, {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-  }).addTo(mymap);
+  // var circle = L.circle(default_position, {
+  //   color: 'red',
+  //   fillColor: '#f03',
+  //   fillOpacity: 0.5,
+  //   radius: 500
+  // }).addTo(mymap);
 }
 
-// var gold_icon = L.icon({
-//     iconUrl: 'images/gold.png',
-//     shadowUrl: 'images/gold_shadow.png',
-//
-//     iconSize:     [32, 32], // size of the icon
-//     shadowSize:   [34, 58], // size of the shadow
-//     iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-//     shadowAnchor: [16, 58],  // the same for the shadow
-//     popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
-// });
-//
-// var flag_icon = L.icon({
-//     iconUrl: 'images/flag.png',
-//     shadowUrl: 'images/flag_shadow.png',
-//
-//     iconSize:     [32, 32], // size of the icon
-//     shadowSize:   [34, 58], // size of the shadow
-//     iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-//     shadowAnchor: [16, 58],  // the same for the shadow
-//     popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
-// });
+var gold_icon = L.icon({
+    iconUrl: 'images/gold.png',
+    shadowUrl: 'images/gold_shadow.png',
+
+    iconSize:     [32, 32], // size of the icon
+    shadowSize:   [34, 58], // size of the shadow
+    iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+    shadowAnchor: [16, 58],  // the same for the shadow
+    popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
+});
+
+var flag_icon = L.icon({
+    iconUrl: 'images/flag.png',
+    shadowUrl: 'images/flag_shadow.png',
+
+    iconSize:     [32, 32], // size of the icon
+    shadowSize:   [34, 58], // size of the shadow
+    iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+    shadowAnchor: [16, 58],  // the same for the shadow
+    popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
+});
 
 function add_markers(marker_list) {
   for (var i = 0; i < marker_list.length; i++) {
