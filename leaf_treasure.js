@@ -120,12 +120,12 @@ function add_markers(marker_list) {
       // var place_icon = gold_icon;
       // if (icon == "flag") {
       //   place_icon = flag_icon
-      };
+      // };
 
       // var marker = L.marker(location, {icon: place_icon}).addTo(mymap);
 
-    }
-}
+    };
+};
 
 function onMapClick(e) {
   var popup = L.popup();
