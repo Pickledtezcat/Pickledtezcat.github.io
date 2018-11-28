@@ -14,7 +14,7 @@ var game_data = {test_data: "Hello world", emoji:emoji};
 
 var action_button = document.createElement("button");
 action_button.className = "button";
-action_button.appendChild(sub_button);
+action_button.appendChild(action_button);
 action_button.innerHTML = "click to add data!";
 action_button.addEventListener('click', activate, false);
 
