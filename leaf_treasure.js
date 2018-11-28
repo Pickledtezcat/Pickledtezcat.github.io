@@ -11,7 +11,7 @@ var marker = L.marker(default_position).addTo(mymap);
 var game_key = "testing";
 var game_data = {test_data: "Hello world"};
 
-GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, pCallback)
+GJAPI.DataStoreSet (GJAPI.DATA_STORE_GLOBAL, game_key, game_data, check_success)
 
 function check_success() {
   console.log("success")
