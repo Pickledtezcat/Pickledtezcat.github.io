@@ -9,6 +9,7 @@ player.onchange = function() {set_initial_markers()};
 var added_markers = [];
 var body_map = document.getElementById("body_map");
 var player_marker = undefined;
+var player_position = default_position;
 
 initiate_map();
 
@@ -24,15 +25,18 @@ var x = document.createElement("button");
 body_map.appendChild(x);
 
 if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError, {enableHighAccuracy:true, timeout: 10000000000});
+    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true, timeout: 10000000000});
 }
 else {
-    alert("Geolocation doesn't work in your browser");
+    x.innerHTML = "Geolocation doesn't work in your browser";
 }
 
 // functions
 
-function showPosition(e) {
+function update_position(e) {
+  player_position = [e.latlng.lat, e.latlng.lng]
+  position.update()
+
   // if (player_marker != undefined) {
   //   player_marker.remove();
   // }
@@ -46,23 +50,34 @@ function showPosition(e) {
 
   x.innerHTML = "Latitude: " + e.coords.latitude +
     "<br>Longitude: " + e.coords.longitude;
+
+}
+
+function position_update() {
+  if (player_marker != undefined) {
+    player_marker.remove();
+  }
+
+  var player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
+  mymap.setView(player_position, 20);
 }
 
 function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            alert("User denied the request for Geolocation.")
-            break;
-        case error.POSITION_UNAVAILABLE:
-            alert("Location information is unavailable.")
-            break;
-        case error.TIMEOUT:
-            alert("The request to get user location timed out.")
-            break;
-        case error.UNKNOWN_ERROR:
-            alert("An unknown error occurred.")
-            break;
-    }
+  position_update()
+  switch(error.code) {
+      case error.PERMISSION_DENIED:
+          x.innerHTML = "User denied the request for Geolocation."
+          break;
+      case error.POSITION_UNAVAILABLE:
+          x.innerHTML = "Location information is unavailable."
+          break;
+      case error.TIMEOUT:
+          x.innerHTML = "The request to get user location timed out."
+          break;
+      case error.UNKNOWN_ERROR:
+          x.innerHTML = "An unknown error occurred."
+          break;
+  }
 }
 
 function clear_keys () {
