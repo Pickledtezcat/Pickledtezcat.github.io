@@ -35,7 +35,7 @@ else {
 // functions
 
 function update_position(e) {
-  player_position = [e.latlng.lat, e.latlng.lng]
+  player_position = [e.coords.lat, e.coords.lng]
   position_update()
 
   // if (player_marker != undefined) {
@@ -49,8 +49,7 @@ function update_position(e) {
   // var player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
   // mymap.setView([lat, long], 20);
 
-  x.innerHTML = "Latitude: " + e.coords.latitude +
-    "<br>Longitude: " + e.coords.longitude;
+  x.innerHTML = player_position;
 
 }
 
@@ -59,7 +58,7 @@ function position_update() {
     player_marker.remove();
   }
 
-  var player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
+  player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
   mymap.setView(player_position, 20);
 }
 
