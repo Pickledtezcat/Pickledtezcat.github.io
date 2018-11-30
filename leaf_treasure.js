@@ -20,7 +20,12 @@ clear_button.addEventListener('click', clear_keys, false);
 
 mymap.on('click', onMapClick);
 
-var watchId = navigator.geolocation.watchPosition(onLocationFound, onLocationError);
+if(navigator.geolocation) {
+    navigator.geolocation.watchPosition(onLocationFound, onLocationError);
+}
+else {
+    alert("Geolocation doesn't work in your browser");
+}
 
 // functions
 
