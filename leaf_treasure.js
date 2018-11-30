@@ -43,12 +43,12 @@ function update_position(e) {
 }
 
 function position_update() {
-  if (player_marker != undefined) {
-    player_marker.remove();
-  }
-
-  player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
-  // mymap.setView(player_position, 20);
+  // if (player_marker != undefined) {
+  //   player_marker.remove();
+  // }
+  //
+  // player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
+  mymap.setView(player_position, 20);
 }
 
 function showError(error) {
