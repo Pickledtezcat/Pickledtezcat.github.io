@@ -49,8 +49,7 @@ function update_position(e) {
   // var player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
   // mymap.setView([lat, long], 20);
 
-  x.innerHTML = player_position;
-
+  x.innerHTML = "player found";
 }
 
 function position_update() {
