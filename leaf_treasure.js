@@ -1,5 +1,5 @@
 var default_position = [35.855460054052756, 128.64783699078816]
-var mymap = L.map('mapid').setView(default_position, 27);
+var mymap = L.map('mapid').setView(default_position, 20);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mymap);
@@ -29,8 +29,12 @@ function onLocationFound(e) {
       player_marker.remove()
     }
 
-    player_marker = L.marker(e.latlng, {icon: happy_icon}).addTo(mymap);
-    mymap.setView(e.latlng, 27)
+    var location = e.latlng
+    var lat = location.lat
+    var long = location.lng
+
+    player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
+    mymap.setView([lat, long], 20)
 }
 
 function onLocationError(e) {
