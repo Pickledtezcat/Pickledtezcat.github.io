@@ -23,9 +23,10 @@ mymap.on('click', onMapClick);
 
 var x = document.createElement("button");
 body_map.appendChild(x);
+x.innerHTML = "Debug Info Here."
 
 if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true, timeout: 10000000000});
+    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true});
 }
 else {
     x.innerHTML = "Geolocation doesn't work in your browser";
@@ -35,7 +36,7 @@ else {
 
 function update_position(e) {
   player_position = [e.latlng.lat, e.latlng.lng]
-  position.update()
+  position_update()
 
   // if (player_marker != undefined) {
   //   player_marker.remove();
