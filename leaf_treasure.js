@@ -34,15 +34,15 @@ else {
 
 function showPosition(e) {
   if (player_marker != undefined) {
-    player_marker.remove()
+    player_marker.remove();
   }
 
-  var location = e.latlng
-  var lat = location.lat
-  var long = location.lng
+  var location = e.latlng;
+  var lat = location.lat;
+  var long = location.lng;
 
   player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
-  mymap.setView([lat, long], 20)
+  mymap.setView([lat, long], 20);
 }
 
 function showError(error) {
