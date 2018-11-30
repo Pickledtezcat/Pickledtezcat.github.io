@@ -60,6 +60,8 @@ function position_update() {
 
   player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
   mymap.setView(player_position, 20);
+
+  alert(player_position)
 }
 
 function showError(error) {
