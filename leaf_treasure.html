@@ -12,21 +12,12 @@
 
     <script src="gj-js-api.js"></script>
     <link rel="stylesheet" type="text/css" href="project_style.css">
-    <style>
-      #mapid { height: 768px;}
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   </head>
 
   <body id="body_map">
     The Treasure Map
     <div id="mapid"></div>
-    <form>
-      <select id="icon_to_use", class="select">
-        <option value="gold">gold</option>
-        <option value="flag">flag</option>
-      </select>
-    </form>
     <form>
       <select id="player_id", class="select">
         <option value="John">John</option>
@@ -35,7 +26,13 @@
         <option value="Sharon">Sharon</option>
       </select>
     </form>
-
+    <form>
+      <select id="icon_to_use", class="select">
+        <option value="gold">gold</option>
+        <option value="flag">flag</option>
+      </select>
+    </form>
+    <script src="icons.js"></script>
     <script src="leaf_treasure.js"></script>
 
   </body>

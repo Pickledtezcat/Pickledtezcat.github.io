@@ -8,14 +8,34 @@ player.onchange = function() {set_initial_markers()};
 
 var added_markers = [];
 var body_map = document.getElementById("body_map");
+var player_marker = undefined;
 
 initiate_map();
+mymap.locate({setView: true, maxZoom: 16, watch: true});
 
 var clear_button = document.createElement("button");
 clear_button.className = "button";
 body_map.appendChild(clear_button);
 clear_button.innerHTML = "clear data!";
 clear_button.addEventListener('click', clear_keys, false);
+
+mymap.on('click', onMapClick);
+mymap.on('locationerror', onLocationError);
+mymap.on('locationfound', onLocationFound);
+
+// functions
+
+function onLocationFound(e) {
+    if (player_marker != undefined) {
+      player_marker.remove()
+    }
+
+    player_marker = L.marker(e.latlng, {icon: happy_icon}).addTo(mymap);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
 
 function clear_keys () {
   var player_id = player.value;
@@ -79,8 +99,6 @@ function add_data(new_data) {
 }
 
 function initiate_map () {
-  var starting_marker = L.marker(default_position).addTo(mymap);
-  // added_markers.push(starting_marker)
   set_initial_markers()
 }
 
@@ -100,31 +118,8 @@ function remove_markers() {
   added_markers = [];
 }
 
-
 function add_markers(marker_list) {
   remove_markers();
-
-  var gold_icon = L.icon({
-      iconUrl: 'images/gold.png',
-      shadowUrl: 'images/gold_shadow.png',
-
-      iconSize:     [32, 32], // size of the icon
-      shadowSize:   [48, 48], // size of the shadow
-      iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-      shadowAnchor: [18, 40],  // the same for the shadow
-      popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
-    });
-
-  var flag_icon = L.icon({
-      iconUrl: 'images/flag.png',
-      shadowUrl: 'images/flag_shadow.png',
-
-      iconSize:     [32, 32], // size of the icon
-      shadowSize:   [48, 48], // size of the shadow
-      iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
-      shadowAnchor: [18, 40],  // the same for the shadow
-      popupAnchor:  [16, -32] // point from which the popup should open relative to the iconAnchor
-    });
 
   for (var i = 0; i < marker_list.length; i++) {
       var marker = marker_list[i]
@@ -149,5 +144,3 @@ function onMapClick(e) {
   var player_data = add_data(marker_data)
 
 }
-
-mymap.on('click', onMapClick);
