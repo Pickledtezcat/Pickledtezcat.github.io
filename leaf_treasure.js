@@ -26,7 +26,7 @@ body_map.appendChild(x);
 x.innerHTML = "Debug Info Here."
 
 if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true});
+    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true, maximumAge = 15000});
 }
 else {
     x.innerHTML = "Geolocation doesn't work in your browser";
@@ -39,15 +39,15 @@ function update_position(e) {
   player_position = [e.coords.latitude , e.coords.longitude]
   position_update()
 
-  x.innerHTML = "player found";
+  // x.innerHTML = "player found";
 }
 
 function position_update() {
-  // if (player_marker != undefined) {
-  //   player_marker.remove();
-  // }
-  //
-  // player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
+  if (player_marker != undefined) {
+    player_marker.remove();
+  }
+  
+  player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
   mymap.setView(player_position, 20);
 }
 
