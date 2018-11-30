@@ -35,7 +35,7 @@ else {
 // functions
 
 function update_position(e) {
-  player_position = [e.coords.lat, e.coords.lng]
+  player_position = [e.coords.latitude , e.coords.longitude]
   position_update()
 
   // if (player_marker != undefined) {
