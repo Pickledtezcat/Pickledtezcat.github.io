@@ -11,7 +11,6 @@ var body_map = document.getElementById("body_map");
 var player_marker = undefined;
 
 initiate_map();
-mymap.locate({setView: true, maxZoom: 16, watch: true});
 
 var clear_button = document.createElement("button");
 clear_button.className = "button";
@@ -20,8 +19,8 @@ clear_button.innerHTML = "clear data!";
 clear_button.addEventListener('click', clear_keys, false);
 
 mymap.on('click', onMapClick);
-mymap.on('locationerror', onLocationError);
-mymap.on('locationfound', onLocationFound);
+
+var watchId = navigator.geolocation.watchPosition(onLocationFound, onLocationError);
 
 // functions
 
@@ -31,10 +30,11 @@ function onLocationFound(e) {
     }
 
     player_marker = L.marker(e.latlng, {icon: happy_icon}).addTo(mymap);
+    mymap.setView(e.latlng, 27)
 }
 
 function onLocationError(e) {
-    alert(e.message);
+    console.log(e.message);
 }
 
 function clear_keys () {
