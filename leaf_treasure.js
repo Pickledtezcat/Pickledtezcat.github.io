@@ -26,7 +26,7 @@ body_map.appendChild(x);
 x.innerHTML = "Debug Info Here."
 
 if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true, maximumAge:0});
+    navigator.geolocation.watchPosition(update_position, showError, {enableHighAccuracy:true, maximumAge:0, timeout: 0});
 }
 else {
     x.innerHTML = "Geolocation doesn't work in your browser";
