@@ -33,16 +33,19 @@ else {
 // functions
 
 function showPosition(e) {
-  if (player_marker != undefined) {
-    player_marker.remove();
-  }
+  // if (player_marker != undefined) {
+  //   player_marker.remove();
+  // }
 
   var location = e.latlng;
   var lat = location.lat;
   var long = location.lng;
 
-  player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
+  var player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
   mymap.setView([lat, long], 20);
+
+  x.innerHTML = "Latitude: " + e.coords.latitude +
+    "<br>Longitude: " + e.coords.longitude;
 }
 
 function showError(error) {
