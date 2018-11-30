@@ -35,19 +35,9 @@ else {
 // functions
 
 function update_position(e) {
+
   player_position = [e.coords.latitude , e.coords.longitude]
   position_update()
-
-  // if (player_marker != undefined) {
-  //   player_marker.remove();
-  // }
-
-  // var location = e.latlng;
-  // var lat = location.lat;
-  // var long = location.lng;
-  //
-  // var player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
-  // mymap.setView([lat, long], 20);
 
   x.innerHTML = "player found";
 }
@@ -58,9 +48,7 @@ function position_update() {
   }
 
   player_marker = L.marker(player_position, {icon: happy_icon}).addTo(mymap);
-  mymap.setView(player_position, 20);
-
-  alert(player_position)
+  // mymap.setView(player_position, 20);
 }
 
 function showError(error) {
