@@ -20,8 +20,11 @@ clear_button.addEventListener('click', clear_keys, false);
 
 mymap.on('click', onMapClick);
 
+var x = document.createElement("button");
+body_map.appendChild(x);
+
 if(navigator.geolocation) {
-    navigator.geolocation.watchPosition(onLocationFound, onLocationError);
+    navigator.geolocation.getCurrentPosition(showPosition, showError, {enableHighAccuracy:true, timeout: 10000000000});
 }
 else {
     alert("Geolocation doesn't work in your browser");
@@ -42,8 +45,26 @@ function onLocationFound(e) {
     mymap.setView([lat, long], 20)
 }
 
-function onLocationError(e) {
-    console.log(e.message);
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
 }
 
 function clear_keys () {
