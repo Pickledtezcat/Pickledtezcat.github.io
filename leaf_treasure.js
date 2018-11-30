@@ -32,37 +32,32 @@ else {
 
 // functions
 
-function onLocationFound(e) {
-    if (player_marker != undefined) {
-      player_marker.remove()
-    }
+function showPosition(e) {
+  if (player_marker != undefined) {
+    player_marker.remove()
+  }
 
-    var location = e.latlng
-    var lat = location.lat
-    var long = location.lng
+  var location = e.latlng
+  var lat = location.lat
+  var long = location.lng
 
-    player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
-    mymap.setView([lat, long], 20)
-}
-
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude;
+  player_marker = L.marker([lat, long], {icon: happy_icon}).addTo(mymap);
+  mymap.setView([lat, long], 20)
 }
 
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
+            alert("User denied the request for Geolocation.")
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
+            alert("Location information is unavailable.")
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
+            alert("The request to get user location timed out.")
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
+            alert("An unknown error occurred.")
             break;
     }
 }
