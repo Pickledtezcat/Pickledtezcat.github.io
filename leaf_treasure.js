@@ -173,7 +173,7 @@ function add_markers(marker_list) {
 
 function onMapClick(e) {
   var locked = document.getElementById('locked');
-  if (locked == "UKLOCKED") {
+  if (locked.value == "UNLOCKED") {
     var click_location = e.latlng
     var emoji = document.getElementById('icon_to_use').value;
     var marker_data = {location: click_location, icon:emoji};
