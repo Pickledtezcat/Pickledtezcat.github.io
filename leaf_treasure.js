@@ -176,3 +176,19 @@ function onMapClick(e) {
   var player_data = add_data(marker_data)
 
 }
+
+
+// go to secret code
+
+var secret_button = document.createElement("button");
+secret_button.className = "button";
+main_body.appendChild(secret_button);
+secret_button.innerHTML = "Enter the secret_code.";
+
+secret_button.addEventListener('click', go_to_secret_code, false);
+
+
+function go_to_secret_code() {
+	window.location.assign("secret_code.html");
+
+}

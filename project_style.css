@@ -3,6 +3,7 @@
    background-color: lightblue;
    text-align: center;
    margin: auto;
+   font-family: "Lucida Console", monospace, serif;
    width: 80%;
    padding: 10px;
    font-size: 1.5em;
@@ -11,6 +12,7 @@
 #body_map {
   color: black;
   background-color: lightblue;
+  font-family: "Lucida Console", monospace, serif;
   text-align: center;
   width: 100%;
   padding: 0px;
