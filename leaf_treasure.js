@@ -113,24 +113,23 @@ function get_data() {
 
 function add_data(new_data) {
   var player_id = player.value;
-  if (player_id != "locked") {
 
-    GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, player_id, function(pResponse)
-    {
-        if(pResponse.success)
-          var my_data = JSON.parse(pResponse.data);
-          if (my_data == undefined) {
-            my_data = new Array();
-          }
+  GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, player_id, function(pResponse)
+  {
+      if(pResponse.success)
+        var my_data = JSON.parse(pResponse.data);
+        if (my_data == undefined) {
+          my_data = new Array();
+        }
 
-          if (new_data != undefined) {
-            my_data.push(new_data)
-          }
+        if (new_data != undefined) {
+          my_data.push(new_data)
+        }
 
-          send_data(my_data)
-          add_markers(my_data)
-    });
-  }
+        send_data(my_data)
+        add_markers(my_data)
+  });
+
 }
 
 function initiate_map () {
@@ -173,11 +172,13 @@ function add_markers(marker_list) {
 }
 
 function onMapClick(e) {
-  var click_location = e.latlng
-  var emoji = document.getElementById('icon_to_use').value;
-  var marker_data = {location: click_location, icon:emoji};
-  var player_data = add_data(marker_data)
-
+  var locked = document.getElementById('locked');
+  if (locked == "UKLOCKED") {
+    var click_location = e.latlng
+    var emoji = document.getElementById('icon_to_use').value;
+    var marker_data = {location: click_location, icon:emoji};
+    var player_data = add_data(marker_data)
+  }
 }
 
 
