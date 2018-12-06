@@ -113,21 +113,24 @@ function get_data() {
 
 function add_data(new_data) {
   var player_id = player.value;
-  GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, player_id, function(pResponse)
-  {
-      if(pResponse.success)
-        var my_data = JSON.parse(pResponse.data);
-        if (my_data == undefined) {
-          my_data = new Array();
-        }
+  if (player_id != "locked") {
 
-        if (new_data != undefined) {
-          my_data.push(new_data)
-        }
+    GJAPI.DataStoreFetch (GJAPI.DATA_STORE_GLOBAL, player_id, function(pResponse)
+    {
+        if(pResponse.success)
+          var my_data = JSON.parse(pResponse.data);
+          if (my_data == undefined) {
+            my_data = new Array();
+          }
 
-        send_data(my_data)
-        add_markers(my_data)
-  });
+          if (new_data != undefined) {
+            my_data.push(new_data)
+          }
+
+          send_data(my_data)
+          add_markers(my_data)
+    });
+  }
 }
 
 function initiate_map () {
