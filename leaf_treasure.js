@@ -182,8 +182,8 @@ function onMapClick(e) {
 
 var secret_button = document.createElement("button");
 secret_button.className = "button";
-main_body.appendChild(secret_button);
-secret_button.innerHTML = "Enter the secret_code.";
+body_map.appendChild(secret_button);
+secret_button.innerHTML = "???";
 
 secret_button.addEventListener('click', go_to_secret_code, false);
 
