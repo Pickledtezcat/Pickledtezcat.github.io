@@ -6,68 +6,21 @@
    font-family: "Lucida Console", monospace, serif;
    width: 80%;
    padding: 10px;
-   font-size: 1.5em;
+   font-size: 1.0em;
 }
 
 img {
-  height: 380px;
-  box-shadow: 1px 1px 2px black;
+  width: 100%;
+  box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
 }
 
 #first_list {
-   color: black;
    text-align: center;
-   margin: auto;
-   font-family: "Lucida Console", monospace, serif;
-   width: 80%;
    padding: 10px;
-   font-size: 1.5em;
 }
 
 #second_list {
-   color: black;
    text-align: center;
-   margin: auto;
-   font-family: "Lucida Console", monospace, serif;
-   width: 80%;
-   padding: 10px;
-   font-size: 1.5em;
-}
-
-#body_map {
-  color: black;
-  background-color: lightblue;
-  font-family: "Lucida Console", monospace, serif;
-  text-align: center;
-  width: 100%;
-  padding: 0px;
-  font-size: 1.5em;
-}
-
-#mapid {
-  height: 480px;
-}
-
-h1 {
-   border: 4px dotted #0066ff;
-   background-color: #3399ff;
-   text-align: center;
-   margin: auto;
-   width: 40%;
-   border-radius: 15px;
-   text-indent: 15px
-   padding: 10px;
-}
-
-
-h2 {
-   border: 4px dotted #0066ff;
-   background-color: #3399ff;
-   text-align: center;
-   margin: auto;
-   width: 40%;
-   border-radius: 15px;
-   text-indent: 15px
    padding: 10px;
 }
 
@@ -80,31 +33,29 @@ p {
 
 button {
   background-color: white;
-  border: 2px solid #008CBA;
-  border-radius: 12px;
   color: #008CBA;
-  padding: 15px 32px;
-  margin: 4px 2px;
+  box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
+  border-radius: 12px;
+  padding: 8px 16px;
+  margin: 2px 2px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   display: inline-block;
   cursor: pointer;
-  font-size: 1.5em;
+  font-size: 2.0em;
 }
 
 button:hover {
-  background-color: #008CBA;
-  color: black;
+  border: 2px solid blue;
+  color: blue;
   cursor: pointer;
 }
 
 button:disabled {
-  background-color: tomato;
-  border: 2px solid red;
-  color: red;
+  background-color: DodgerBlue;
+  color: DarkBlue;
   opacity: 0.6;
   cursor: not-allowed;
 }

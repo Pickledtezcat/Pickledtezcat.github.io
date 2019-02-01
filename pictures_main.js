@@ -66,7 +66,7 @@ function ExitButton(passed_button) {
 };
 
 function initiate () {
-  var words = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz"]
+  var words = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
   var wordlist = shuffle(words)
   var selected_words = []
 

@@ -37,6 +37,7 @@ function InteractiveButton(passed_button, content) {
   this.changed = function() {
     this.owner = document.getElementById("second_list");
     this.owner.appendChild(this.my_button);
+    this.my_button.disabled = true
     added_list.push(this);
     update_all();
   };
@@ -49,6 +50,7 @@ function InteractiveButton(passed_button, content) {
     this.owner = document.getElementById("first_list");
     this.owner.appendChild(this.my_button);
     this.my_button.innerHTML = this.content;
+    this.my_button.disabled = false
   };
 
 }
@@ -62,7 +64,7 @@ function ExitButton(passed_button) {
 
   this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = "Try Again.";
+  this.my_button.innerHTML = "Next.";
 
   this.clicked = function() {
     window.location.assign("sentences.html");
@@ -103,9 +105,6 @@ function update_all (){
   if (test_text == original_text) {
     alert("good job!")
     new ExitButton();
-    for (var i = 0; i < button_list.length; ++i) {
-      button_list[i].my_button.disabled = true
-    }
 
   } else {
       clear_all()}
