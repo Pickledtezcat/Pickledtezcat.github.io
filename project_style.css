@@ -10,7 +10,9 @@
 }
 
 img {
-  width: 80%;
+  margin: auto;
+  max-height: 30%;
+  max-width: 80%;
   box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
 }
 
@@ -38,6 +40,7 @@ button {
   border-radius: 12px;
   padding: 8px 16px;
   margin: 2px 2px;
+  min-width: 20%;
   text-align: center;
   text-decoration: none;
   -webkit-transition-duration: 0.4s; /* Safari */
