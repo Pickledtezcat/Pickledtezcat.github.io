@@ -24,8 +24,8 @@ function shuffle (list) {
   return list;
 }
 
-function InteractiveButton(passed_button, content) {
-  this.my_button = passed_button;
+function InteractiveButton(content) {
+  this.my_button = document.createElement("button");
   this.content = content;
   this.owner = document.getElementById("first_list");
 
@@ -55,10 +55,8 @@ function InteractiveButton(passed_button, content) {
 
 }
 
-function ExitButton(passed_button) {
-  button = document.createElement("button")
-
-  this.my_button = button;
+function ExitButton() {
+  this.my_button = document.createElement("button");
   this.content = content;
   this.owner = document.getElementById("exit_button");
 
@@ -84,7 +82,7 @@ function initiate() {
 
   for(var i = 0; i < original_list.length; ++i) {
     word = original_list[i];
-    added_button = new InteractiveButton(document.createElement("button"), word);
+    added_button = new InteractiveButton(word);
     button_list.push(added_button);
   }
 
