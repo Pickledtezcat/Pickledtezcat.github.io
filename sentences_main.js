@@ -1,4 +1,5 @@
 var body = document.getElementById("body");
+var check_index = 0
 
 var sentences = ["Add the salt to the soup.", "Set the temperature to 200c."
 , "Open the oven door.", "Remove the bread from the oven."]
@@ -32,13 +33,17 @@ function InteractiveButton(content) {
   this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = content;
-  this.change_text = "changed!";
+  this.added = false
+  this.index = check_index
+  check_index += 1
 
   this.changed = function() {
-    this.owner = document.getElementById("second_list");
-    this.owner.appendChild(this.my_button);
-    this.my_button.disabled = true
-    added_list.push(this);
+    if (this.added != true) {
+      this.add()
+    } else {
+      this.remove()
+    }
+
     update_all();
   };
 
@@ -46,11 +51,18 @@ function InteractiveButton(content) {
   // use .bind() on the function to bind the function to the prototype,
   // not the button
 
-  this.clear = function() {
+  this.add = function() {
+    this.added = true;
+    this.index = check_index
+    check_index += 1
+    this.owner = document.getElementById("second_list");
+    this.owner.appendChild(this.my_button);
+  }
+
+  this.remove = function() {
+    this.added = false
     this.owner = document.getElementById("first_list");
     this.owner.appendChild(this.my_button);
-    this.my_button.innerHTML = this.content;
-    this.my_button.disabled = false
   };
 
 }
@@ -91,6 +103,16 @@ function initiate() {
 function update_all (){
 
   var text_list = [];
+  var added_list = [];
+
+  for (var i = 0; i < button_list.length; ++i) {
+    var check_button = button_list[i]
+    if (check_button.added) {
+      added_list.push(check_button)
+    }
+  }
+
+  added_list.sort(function(a, b){return a.index - b.index});
 
   if (added_list.length == button_list.length) {
     for (var i = 0; i < added_list.length; ++i) {
@@ -101,7 +123,10 @@ function update_all (){
   console.info(test_text)
 
   if (test_text == original_text) {
-    alert("good job!")
+    for (var i = 0; i < button_list.length; ++i) {
+      button_list[i].my_button.disabled = true
+
+    }    
     new ExitButton();
 
   } else {
@@ -112,7 +137,7 @@ function update_all (){
 function clear_all (){
   added_list = []
   for (var i = 0; i < button_list.length; ++i) {
-    button_list[i].clear()
+    button_list[i].remove()
   }
 };
 
