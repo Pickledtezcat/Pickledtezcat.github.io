@@ -23,14 +23,17 @@ function InteractiveButton(content, correct) {
   this.correct = correct
   this.my_button = document.createElement("button");
   this.content = content;
-  this.owner = document.getElementById("second_list");
+  this.owner = document.getElementById("word_list");
 
   this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = content;
+  this.has_clicked = false
 
   this.changed = function() {
+    if (this.has_clicked != true) {
     update_all(this.correct);
+  }
   };
 
   this.my_button.addEventListener('click', this.changed.bind(this));
@@ -38,6 +41,7 @@ function InteractiveButton(content, correct) {
   // not the button
 
   this.check = function() {
+    this.has_clicked = true
     if (this.correct != true) {
       this.my_button.disabled = true
     }
@@ -79,8 +83,7 @@ function initiate () {
   var picture = document.createElement("IMG")
   picture.src = "pictures/" + picture_name + ".jpg"
 
-  console.info(picture.src)
-  document.getElementById("first_list").appendChild(picture)
+  document.getElementById("picture").appendChild(picture)
 
   for (var i = 0; i < selected_words.length; ++i) {
     var correct = selected_words[i] == picture_name
@@ -92,7 +95,7 @@ function initiate () {
 
 function update_all (correct) {
     if (correct) {
-      alert("good job!")
+      console.log("correct")
     }
 
     for (var i = 0; i < all_buttons.length; ++i) {
