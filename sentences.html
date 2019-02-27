@@ -7,12 +7,26 @@
   </head>
 
   <body id=body>
-      <p> Rearrange the words to make a sentence: </p>
+    <div class="topnav">
+     <button class="active topnav", id="home">Home</button>
+     <button class="topnav", id="pictures">Match Pictures</button>
+     <button class="topnav", id="sentences">Match Sentences</button>
+     <button class="topnav", id="flying_pictures">Flying Pictures</button>
+     <button class="topnav", id="about">About</button>
+     <form>
+        <select id="selector", class="topnav">
+          <option value="week1">week 1</option>
+          <option value="week2">week 2</option>
+        </select>
+      </form>
+   </div>
+   <script src="container_script.js"></script>
 
-      <div id=second_list></div>
-      <div id=first_list></div>
-      <div id=exit_button></div>
+    <p class="inside"> Rearrange the words to make a sentence: </p>
 
-      <script src="sentences_main.js"></script>
+    <div class="inside", id=second_list></div>
+    <div class="inside", id=first_list></div>
+
+    <script src="sentences_main.js"></script>
   </body>
 </html>

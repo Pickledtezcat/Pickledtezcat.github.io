@@ -1,3 +1,6 @@
+var parameters = location.search.split("?")[1]
+console.log(parameters)
+
 var body = document.getElementById("body");
 var all_buttons = []
 
@@ -7,27 +10,29 @@ function pick_random (list) {
   return list[i];
 }
 
-function shuffle (list) {
-  var n = list.length;
-  while (n--) {
-    var i = Math.floor(n * Math.random());
-    var tmp = list[i];
-    list[i] = list[n];
-    list[n] = tmp;
+var shuffle = function (list) {
+	var currentIndex = list.length;
+	var temporaryValue, randomIndex;
 
-  }
-  return list;
-}
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
 
-function InteractiveButton(content, correct) {
+		temporaryValue = list[currentIndex];
+		list[currentIndex] = list[randomIndex];
+		list[randomIndex] = temporaryValue;
+	}
+	return list;
+};
+
+function InteractiveButton(contents, correct) {
   this.correct = correct
   this.my_button = document.createElement("button");
-  this.content = content;
   this.owner = document.getElementById("word_list");
 
   this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = content;
+  this.my_button.innerHTML = contents;
   this.has_clicked = false
 
   this.changed = function() {
@@ -36,6 +41,7 @@ function InteractiveButton(content, correct) {
   }
   };
 
+  document.addEventListener("keydown", this.changed.bind(this));
   this.my_button.addEventListener('click', this.changed.bind(this));
   // use .bind() on the function to bind the function to the prototype,
   // not the button
@@ -52,7 +58,6 @@ function InteractiveButton(content, correct) {
 function ExitButton() {
 
   this.my_button = document.createElement("button");
-  this.content = content;
   this.owner = document.getElementById("exit_button");
 
   this.my_button.className = "button";
@@ -60,22 +65,35 @@ function ExitButton() {
   this.my_button.innerHTML = "Next Picture.";
 
   this.clicked = function() {
-    window.location.assign("pictures.html");
+    window.location.assign("pictures.html?"+parameters);
   };
 
   this.my_button.addEventListener('click', this.clicked.bind(this));
   // use .bind() on the function to bind the function to the prototype,
   // not the button
+
+  document.addEventListener("keydown", this.clicked.bind(this));
+  // use keydown even listener to skip clicking on correct answer
+
 };
 
 function initiate () {
-  var words = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
+  var words1 = ["museum", "biggest", "oldest", "find"]
+  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
+  if (parameters == "week1") {
+    words = words1
+  } else {
+    words = words2
+  }
+
+
   var wordlist = shuffle(words)
   var selected_words = []
 
   for(var i = 0; i < 3; ++i) {
     selected_words.push(wordlist[i])
   }
+  console.log(selected_words)
 
   var picture_name = selected_words[0]
   selected_words = shuffle(selected_words)

@@ -3,21 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <title>Main Menu</title>
-    <link rel="stylesheet" type="text/css" href="container.css">
+    <link rel="stylesheet" type="text/css" href="project_style.css">
 
   </head>
 
-  <body id=body>
+<body id=body>
 
   <div class="topnav">
-   <button class="active" id="home">Home</button>
-   <button id="pictures">Match Pictures</button>
-   <button id="sentences">Match Sentences</button>
-   <button id="about">About</button>
+   <button class="active topnav", id="home">Home</button>
+   <button class="topnav", id="pictures">Match Pictures</button>
+   <button class="topnav", id="sentences">Match Sentences</button>
+   <button class="topnav", id="flying_pictures">Flying Pictures</button>
+   <button class="topnav", id="about">About</button>
+   <form>
+      <select id="selector", class="topnav">
+        <option value="week1">week 1</option>
+        <option value="week2">week 2</option>
+      </select>
+    </form>
  </div>
-
-<iframe src="home.html" id=inset></iframe>
 <script src="container_script.js"></script>
+<p class=inside>Click the menu buttons above to go to different pages.</p>
 
 </body>
 </html>

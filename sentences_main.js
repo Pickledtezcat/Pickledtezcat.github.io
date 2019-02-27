@@ -1,3 +1,5 @@
+var parameters = location.search.split("?")[1]
+
 var body = document.getElementById("body");
 var check_index = 0
 
@@ -13,17 +15,20 @@ function pick_random (list) {
   return list[i];
 }
 
-function shuffle (list) {
-  var n = list.length;
-  while (n--) {
-    var i = Math.floor(n * Math.random());
-    var tmp = list[i];
-    list[i] = list[n];
-    list[n] = tmp;
+var shuffle = function (list) {
+	var currentIndex = list.length;
+	var temporaryValue, randomIndex;
 
-  }
-  return list;
-}
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		temporaryValue = list[currentIndex];
+		list[currentIndex] = list[randomIndex];
+		list[randomIndex] = temporaryValue;
+	}
+	return list;
+};
 
 function InteractiveButton(content) {
   this.my_button = document.createElement("button");
@@ -69,23 +74,24 @@ function InteractiveButton(content) {
 
 function ExitButton() {
   this.my_button = document.createElement("button");
-  this.content = content;
-  this.owner = document.getElementById("exit_button");
+  this.owner = document.getElementById("first_list");
 
   this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = "Next.";
 
   this.clicked = function() {
-    window.location.assign("sentences.html");
+    window.location.assign("sentences.html?"+parameters);
   };
 
   this.my_button.addEventListener('click', this.clicked.bind(this));
   // use .bind() on the function to bind the function to the prototype,
   // not the button
+
+  document.addEventListener("keydown", this.clicked.bind(this));
 };
 
-sessionStorage.clear()
+// use paramters to set word or sentence lists
 
 var original_text = pick_random(sentences)
 var original_list = shuffle(original_text.split(" "));
@@ -126,7 +132,7 @@ function update_all (){
     for (var i = 0; i < button_list.length; ++i) {
       button_list[i].my_button.disabled = true
 
-    }    
+    }
     new ExitButton();
 
   } else {
