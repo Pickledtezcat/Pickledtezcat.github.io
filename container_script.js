@@ -13,6 +13,8 @@ var flying_pictures = document.getElementById("flying_pictures");
 var home = document.getElementById("home");
 
 sentences.addEventListener('click', go_to_sentences, false);
+console.log(sentences.classList)
+
 function go_to_sentences() {
   sentences.className = "active"
   pictures.className = "inactive"

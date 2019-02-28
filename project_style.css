@@ -1,13 +1,14 @@
 body {
-   color: black;
-   background-color: lightblue;
+   color: white;
+   background-color: rgb(90, 139, 165);
    text-align: center;
    margin: auto;
    font-family: Arial;
    height: 100%;
-   padding: 10px;
+   box-sizing: border-box;
    text-shadow: 2px 2px rgba(0,0,0.4,0.2);
-   font-size: 2.0em;
+   overflow: hidden;
+   max-height: 30%;
 }
 
 img {
@@ -18,94 +19,80 @@ img {
 }
 
 #picture {
-  padding: 10px;
-}
-
-#word_list {
-  max-height: 30%;
-  text-align: center;
-  padding: 10px;
+  min-height: 300px;
 }
 
 #first_list {
-  max-height: 30%;
-  height: 300px;
-  text-align: center;
-  padding: 10px;
+  min-height: 300px;
 }
 
 #second_list {
-  max-height: 30%;
-  height: 300px;
-  text-align: center;
-  padding: 10px;
+  min-height: 300px;
 }
 
-.inside p {
+.inside {
+  font-size: 3.0em;
+}
+
+p.inside {
    text-align: center;
    margin: auto;
    width: 50%;
    padding: 10px;
-   font-size: 2.0em;
 }
 
-.inside button {
+button.inside {
   background-color: white;
   font-family: Arial;
-  color: #008CBA;
-  box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
-  border-radius: 12px;
-  padding: 8px 16px;
-  margin: 2px 2px;
-  min-width: 20%;
-  text-align: center;
-  text-decoration: none;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
-  cursor: pointer;
-  font-size: 2.0em;
+  margin: 2px 2px;
+  border-radius: 12px;
+  padding: 10px;
+  color: black;
+  box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
+  min-width: 10%;
 }
 
-.inside button:hover {
+button.inside:hover {
   border: 2px solid blue;
-  color: blue;
-  cursor: pointer;
+  color: darkblue;
 }
 
-.inside button:disabled {
-  background-color: DodgerBlue;
-  color: DarkBlue;
+button.inside:disabled {
+  background-color: rgb(156, 185, 201);
+  color: white;
   opacity: 0.6;
   cursor: not-allowed;
 }
 
 .topnav {
-  background-color: lightblue;
+  background-color: rgb(190, 206, 218);
+  border-radius: 12px;
+  padding: 3px 3px;
+  margin: 14px 16px;
   overflow: hidden;
   font-size: 1.0em;
 }
 
-.topnav input[type=text] {
-    padding: 14px 16px;
-    float: right;
-    border: 2px solid DodgerBlue;
-    border-radius: 4px;
-    box-sizing: border-box;
+.topnav form {
+  float: right;
+  padding: 14px 16px;
 }
 
-.topnav button {
-  background-color: DarkBlue;
-  border: none;
+.topnav button{
+  background-color: rgb(90, 139, 165);
+  border-radius: 12px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   float: left;
   color: white;
   text-align: center;
   padding: 14px 16px;
-  text-decoration: none;
 }
 
 .topnav button:hover {
-  background-color: DodgerBlue;
-  color: white;
+  background-color: dodgerblue;
 }
 
 .topnav button.active {

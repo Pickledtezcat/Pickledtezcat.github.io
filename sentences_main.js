@@ -33,9 +33,8 @@ var shuffle = function (list) {
 function InteractiveButton(content) {
   this.my_button = document.createElement("button");
   this.content = content;
+  this.my_button.classList.add("inside")
   this.owner = document.getElementById("first_list");
-
-  this.my_button.className = "button";
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = content;
   this.added = false
@@ -76,7 +75,7 @@ function ExitButton() {
   this.my_button = document.createElement("button");
   this.owner = document.getElementById("first_list");
 
-  this.my_button.className = "button";
+  this.my_button.classList.add("inside")
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = "Next.";
 

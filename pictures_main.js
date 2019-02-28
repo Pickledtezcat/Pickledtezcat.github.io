@@ -30,7 +30,7 @@ function InteractiveButton(contents, correct) {
   this.my_button = document.createElement("button");
   this.owner = document.getElementById("word_list");
 
-  this.my_button.className = "button";
+  this.my_button.classList.add("inside")
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = contents;
   this.has_clicked = false
@@ -60,7 +60,7 @@ function ExitButton() {
   this.my_button = document.createElement("button");
   this.owner = document.getElementById("exit_button");
 
-  this.my_button.className = "button";
+  this.my_button.classList.add("inside")
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = "Next Picture.";
 

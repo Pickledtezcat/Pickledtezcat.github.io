@@ -8,25 +8,27 @@
 
   <body id=body>
     <div class="topnav">
-     <button class="active topnav", id="home">Home</button>
-     <button class="topnav", id="pictures">Match Pictures</button>
-     <button class="topnav", id="sentences">Match Sentences</button>
-     <button class="topnav", id="flying_pictures">Flying Pictures</button>
-     <button class="topnav", id="about">About</button>
+     <button id="home">Home</button>
+     <button class="active", id="pictures">Match Pictures</button>
+     <button id="sentences">Match Sentences</button>
+     <button id="flying_pictures">Flying Pictures</button>
+     <button id="about">About</button>
      <form>
-        <select id="selector", class="topnav">
+        <select id="selector">
           <option value="week1">week 1</option>
           <option value="week2">week 2</option>
         </select>
       </form>
-    </div>
-    <script src="container_script.js"></script>
+   </div>
+   <script src="container_script.js"></script>
 
-    <p class="inside"> Match the word to the picture: </p>
-    <div class="inside", id=picture></div>
-    <div class="inside", id=word_list></div>
-    <div class="inside", id=exit_button></div>
+  </div class=inside>
+    <p class=inside> Match the word to the picture: </p>
+    <div id=picture></div>
+    <div id=word_list></div>
+    <div id=exit_button></div>
 
     <script src="pictures_main.js"></script>
+  </div>
   </body>
 </html>
