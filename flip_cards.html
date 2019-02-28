@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Flying Pictures</title>
+    <title>Sentences</title>
     <link rel="stylesheet" type="text/css" href="project_style.css">
   </head>
 
@@ -11,8 +11,8 @@
      <button id="home">Home</button>
      <button id="pictures">Match Pictures</button>
      <button id="sentences">Match Sentences</button>
-     <button class="active", id="flying_pictures">Flying Pictures</button>
-     <button id="flip_cards">Flip Cards</button>
+     <button id="flying_pictures">Flying Pictures</button>
+     <button class="active", id="flip_cards">Flip Cards</button>
      <button id="about">About</button>
      <form>
         <select id="selector">
@@ -23,12 +23,20 @@
    </div>
    <script src="container_script.js"></script>
 
-    <div class=inside>
-      <p> Match the word to the picture: </p>
-      <div id=picture></div>
-      <div id=word_list></div>
-      <div id=exit_button></div>
+   <div class=inside>
+     <p> Mouse over to flip the card, <br> press space for answer: </p>
+     <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front", id=flip_card_front>
+          </div>
+          <div class="flip-card-back", id=flip_card_back>
+          </div>
+        </div>
     </div>
-    <script src="pictures_main.js"></script>
+
+     <div id=exit_button></div>
+
+     <script src="flip_cards_script.js"></script>
+  </div>
   </body>
 </html>

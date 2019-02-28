@@ -25,45 +25,36 @@ var shuffle = function (list) {
 	return list;
 };
 
-function InteractiveButton(contents, correct) {
-  this.correct = correct
-  this.my_button = document.createElement("button");
-  this.owner = document.getElementById("word_list");
+function flip_card_object(picture_name) {
+  this.front = document.getElementById("flip_card_front");
+  this.back = document.getElementById("flip_card_back");
 
-  this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = contents;
-  this.has_clicked = false
+  this.picture = document.createElement("IMG")
+  this.picture.src = "pictures/" + picture_name + ".jpg"
+  this.back.appendChild(this.picture);
+
+  this.paragraph = document.createElement("P")
+  this.paragraph.innerHTML = "???"
+  this.front.appendChild(this.paragraph);
+  this.picture_name = picture_name
 
   this.changed = function() {
-    if (this.has_clicked != true) {
-    update_all(this.correct);
+    this.paragraph.innerHTML = this.picture_name
+    new ExitButton()
   }
-  };
-
   document.addEventListener("keydown", this.changed.bind(this));
-  this.my_button.addEventListener('click', this.changed.bind(this));
-  // use .bind() on the function to bind the function to the prototype,
-  // not the button
-
-  this.check = function() {
-    this.has_clicked = true
-    if (this.correct != true) {
-      this.my_button.disabled = true
-    }
-  };
-
 }
 
-function ExitButton() {
+function ExitButton(answer) {
 
   this.my_button = document.createElement("button");
   this.owner = document.getElementById("exit_button");
 
   this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = "Next Picture.";
+  this.my_button.innerHTML = "Next Card!";
 
   this.clicked = function() {
-    window.location.assign("pictures.html?"+parameters);
+    window.location.assign("flip_cards.html?"+parameters);
   };
 
   this.my_button.addEventListener('click', this.clicked.bind(this));
@@ -86,26 +77,7 @@ function initiate () {
 
 
   var wordlist = shuffle(words)
-  var selected_words = []
-
-  for(var i = 0; i < 3; ++i) {
-    selected_words.push(wordlist[i])
-  }
-  console.log(selected_words)
-
-  var picture_name = selected_words[0]
-  selected_words = shuffle(selected_words)
-
-  var picture = document.createElement("IMG")
-  picture.src = "pictures/" + picture_name + ".jpg"
-
-  document.getElementById("picture").appendChild(picture)
-
-  for (var i = 0; i < selected_words.length; ++i) {
-    var correct = selected_words[i] == picture_name
-    var option = new InteractiveButton(selected_words[i], correct)
-    all_buttons.push(option)
-  }
+  new flip_card_object(wordlist[0])
 
 }
 
