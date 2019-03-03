@@ -7,22 +7,10 @@
   </head>
 
   <body id=body>
-    <div class="topnav">
-     <button id="home">Home</button>
-     <button id="pictures">Match Pictures</button>
-     <button id="sentences">Match Sentences</button>
-     <button class="active", id="flying_pictures">Flying Pictures</button>
-     <button id="flip_cards">Flip Cards</button>
-     <button id="about">About</button>
-     <form>
-        <select id="selector">
-          <option value="week1">week 1</option>
-          <option value="week2">week 2</option>
-        </select>
-      </form>
-   </div>
-   <script src="container_script.js"></script>
-   <script src="inner_buttons.js"></script>
+    <div id="top_nav", class="topnav">
+    </div>
+    <script src="container_script.js"></script>
+    <script src="inner_buttons.js"></script>
 
     <div class=inside>
       <p> Match the word to the picture: </p>
@@ -30,6 +18,6 @@
       <div id=word_list></div>
       <div id=exit_button></div>
     </div>
-    <script src="pictures_main.js"></script>
+    <script src="flying_pictures.js"></script>
   </body>
 </html>

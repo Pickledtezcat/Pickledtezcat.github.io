@@ -1,3 +1,6 @@
+var menu_button = document.getElementById("sentences")
+menu_button.classList.add("active");
+
 var parameters = location.search.split("?")[1]
 
 var body = document.getElementById("body");
@@ -40,7 +43,7 @@ function update_all (){
 
   if (added_list.length == button_list.length) {
     for (var i = 0; i < added_list.length; ++i) {
-        text_list.push(added_list[i].content)
+        text_list.push(added_list[i].contents)
     }
 
   test_text = text_list.join(" ")

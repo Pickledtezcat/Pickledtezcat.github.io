@@ -19,31 +19,76 @@ var shuffle = function (list) {
 	return list;
 };
 
-function WordListButton(contents) {
-  this.correct = correct
+function LetterButton(letter) {
   this.my_button = document.createElement("button");
-  this.owner = document.getElementById("word_list");
-
+  this.contents = letter;
+  this.owner = document.getElementById("second_list");
   this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = contents;
-  this.has_clicked = false
+  this.my_button.innerHTML = letter;
+  // use .bind() on the function to bind the function to the prototype,
+  // not the button
+}
+
+function AnswerRevealButton(answer) {
+  this.my_button = document.createElement("button");
+  this.contents = answer;
+  this.owner = document.getElementById("first_list");
+  this.owner.appendChild(this.my_button);
+  this.my_button.innerHTML = "???";
+  this.revealed = false
 
   this.changed = function() {
-    if (this.has_clicked != true) {
-    update_all(this.correct);
-  }
+    if (this.revealed != true) {
+      this.my_button.innerHTML = this.contents
+      this.revealed = true
+    } else {
+      window.location.assign(window.location.href);
+    }
+
   };
 
   document.addEventListener("keydown", this.changed.bind(this));
   this.my_button.addEventListener('click', this.changed.bind(this));
+
+}
+
+
+function WordListButton(word) {
+  this.my_button = document.createElement("button");
+  this.contents = word;
+  this.owner = document.getElementById("first_list");
+  this.owner.appendChild(this.my_button);
+  this.my_button.innerHTML = word;
+  this.added = false
+  this.index = check_index
+  check_index += 1
+
+  this.changed = function() {
+    if (this.added != true) {
+      this.add()
+    } else {
+      this.remove()
+    }
+
+    update_all();
+  };
+
+  this.my_button.addEventListener('click', this.changed.bind(this));
   // use .bind() on the function to bind the function to the prototype,
   // not the button
 
-  this.check = function() {
-    this.has_clicked = true
-    if (this.correct != true) {
-      this.my_button.disabled = true
-    }
+  this.add = function() {
+    this.added = true;
+    this.index = check_index
+    check_index += 1
+    this.owner = document.getElementById("second_list");
+    this.owner.appendChild(this.my_button);
+  }
+
+  this.remove = function() {
+    this.added = false
+    this.owner = document.getElementById("first_list");
+    this.owner.appendChild(this.my_button);
   };
 
 }
@@ -86,7 +131,7 @@ function ExitButton(label) {
   this.my_button.innerHTML = label;
 
   this.clicked = function() {
-    window.location.assign(window.location.href + "?" +parameters);
+    window.location.assign(window.location.href);
   };
 
   this.my_button.addEventListener('click', this.clicked.bind(this));

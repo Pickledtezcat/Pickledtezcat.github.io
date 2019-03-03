@@ -1,3 +1,6 @@
+var menu_button = document.getElementById("flying_pictures")
+menu_button.classList.add("active");
+
 var parameters = location.search.split("?")[1]
 console.log(parameters)
 

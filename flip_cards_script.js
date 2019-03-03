@@ -1,29 +1,11 @@
+var menu_button = document.getElementById("flip_cards")
+menu_button.classList.add("active");
+
 var parameters = location.search.split("?")[1]
 console.log(parameters)
 
 var body = document.getElementById("body");
 var all_buttons = []
-
-function pick_random (list) {
-  var n = list.length;
-  var i = Math.floor(n * Math.random());
-  return list[i];
-}
-
-var shuffle = function (list) {
-	var currentIndex = list.length;
-	var temporaryValue, randomIndex;
-
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		temporaryValue = list[currentIndex];
-		list[currentIndex] = list[randomIndex];
-		list[randomIndex] = temporaryValue;
-	}
-	return list;
-};
 
 function flip_card_object(picture_name) {
   this.front = document.getElementById("flip_card_front");
