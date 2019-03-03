@@ -9,85 +9,6 @@ var sentences = ["Add the salt to the soup.", "Set the temperature to 200c."
 var button_list = []
 var added_list = []
 
-function pick_random (list) {
-  var n = list.length;
-  var i = Math.floor(n * Math.random());
-  return list[i];
-}
-
-var shuffle = function (list) {
-	var currentIndex = list.length;
-	var temporaryValue, randomIndex;
-
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-
-		temporaryValue = list[currentIndex];
-		list[currentIndex] = list[randomIndex];
-		list[randomIndex] = temporaryValue;
-	}
-	return list;
-};
-
-function InteractiveButton(content) {
-  this.my_button = document.createElement("button");
-  this.content = content;
-  this.owner = document.getElementById("first_list");
-  this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = content;
-  this.added = false
-  this.index = check_index
-  check_index += 1
-
-  this.changed = function() {
-    if (this.added != true) {
-      this.add()
-    } else {
-      this.remove()
-    }
-
-    update_all();
-  };
-
-  this.my_button.addEventListener('click', this.changed.bind(this));
-  // use .bind() on the function to bind the function to the prototype,
-  // not the button
-
-  this.add = function() {
-    this.added = true;
-    this.index = check_index
-    check_index += 1
-    this.owner = document.getElementById("second_list");
-    this.owner.appendChild(this.my_button);
-  }
-
-  this.remove = function() {
-    this.added = false
-    this.owner = document.getElementById("first_list");
-    this.owner.appendChild(this.my_button);
-  };
-
-}
-
-function ExitButton() {
-  this.my_button = document.createElement("button");
-  this.owner = document.getElementById("first_list");
-
-  this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = "Next.";
-
-  this.clicked = function() {
-    window.location.assign("sentences.html?"+parameters);
-  };
-
-  this.my_button.addEventListener('click', this.clicked.bind(this));
-  // use .bind() on the function to bind the function to the prototype,
-  // not the button
-
-  document.addEventListener("keydown", this.clicked.bind(this));
-};
-
 // use paramters to set word or sentence lists
 
 var original_text = pick_random(sentences)
@@ -97,7 +18,7 @@ function initiate() {
 
   for(var i = 0; i < original_list.length; ++i) {
     word = original_list[i];
-    added_button = new InteractiveButton(word);
+    added_button = new WordListButton(word);
     button_list.push(added_button);
   }
 
@@ -130,7 +51,7 @@ function update_all (){
       button_list[i].my_button.disabled = true
 
     }
-    new ExitButton();
+    new ExitButton("Next!");
 
   } else {
       clear_all()}

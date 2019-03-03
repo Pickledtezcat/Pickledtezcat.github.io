@@ -40,31 +40,10 @@ function flip_card_object(picture_name) {
 
   this.changed = function() {
     this.paragraph.innerHTML = this.picture_name
-    new ExitButton()
+    new ExitButton("Next Card!")
   }
   document.addEventListener("keydown", this.changed.bind(this));
 }
-
-function ExitButton(answer) {
-
-  this.my_button = document.createElement("button");
-  this.owner = document.getElementById("exit_button");
-
-  this.owner.appendChild(this.my_button);
-  this.my_button.innerHTML = "Next Card!";
-
-  this.clicked = function() {
-    window.location.assign("flip_cards.html?"+parameters);
-  };
-
-  this.my_button.addEventListener('click', this.clicked.bind(this));
-  // use .bind() on the function to bind the function to the prototype,
-  // not the button
-
-  document.addEventListener("keydown", this.clicked.bind(this));
-  // use keydown even listener to skip clicking on correct answer
-
-};
 
 function initiate () {
   var words1 = ["museum", "biggest", "oldest", "find"]
@@ -82,15 +61,7 @@ function initiate () {
 }
 
 function update_all (correct) {
-    if (correct) {
-      console.log("correct")
-    }
-
-    for (var i = 0; i < all_buttons.length; ++i) {
-        all_buttons[i].check()
-    }
-    new ExitButton()
-
+    console.log("dummy")
 }
 
 
