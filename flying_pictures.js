@@ -7,6 +7,40 @@ console.log(parameters)
 var body = document.getElementById("body");
 var all_buttons = []
 
+function FlyingCard (answer) {
+  this.answer = answer
+  this.owner = document.getElementById("picture")
+  this.paragraph = document.createElement("p")
+  this.paragraph.id = "answer"
+  this.paragraph.innerHTML = "???"
+  this.card = document.createElement("IMG")
+  this.card.src = "pictures/" + answer + ".jpg"
+  this.card.id = "flying_picture"
+  this.owner.appendChild(this.paragraph)
+  this.owner.appendChild(this.card)
+  this.moved = 0
+
+  var card = this.card
+
+  this.changed = function() {
+    if (this.moved == 0) {
+      var ani_list = ["up", "left", "right", "down"]
+      var picked = shuffle(ani_list)[0]
+
+      this.card.classList.toggle(picked)
+      this.moved = 1
+    }
+    else if (this.moved == 1) {
+      this.paragraph.innerHTML = this.answer
+      this.moved = 2
+      new ExitButton("Next Card!")
+  }
+
+  }
+  document.addEventListener("keydown", this.changed.bind(this));
+
+}
+
 function initiate () {
   var words1 = ["museum", "biggest", "oldest", "find"]
   var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
@@ -18,38 +52,14 @@ function initiate () {
 
 
   var wordlist = shuffle(words)
-  var selected_words = []
+  var answer = wordlist[0]
 
-  for(var i = 0; i < 3; ++i) {
-    selected_words.push(wordlist[i])
-  }
-  console.log(selected_words)
-
-  var picture_name = selected_words[0]
-  selected_words = shuffle(selected_words)
-
-  var picture = document.createElement("IMG")
-  picture.src = "pictures/" + picture_name + ".jpg"
-
-  document.getElementById("picture").appendChild(picture)
-
-  for (var i = 0; i < selected_words.length; ++i) {
-    var correct = selected_words[i] == picture_name
-    var option = new InteractiveButton(selected_words[i], correct)
-    all_buttons.push(option)
-  }
+  new FlyingCard(answer)
 
 }
 
 function update_all (correct) {
-    if (correct) {
-      console.log("correct")
-    }
-
-    for (var i = 0; i < all_buttons.length; ++i) {
-        all_buttons[i].check()
-    }
-    new ExitButton()
+      console.log("dummy")
 
 }
 

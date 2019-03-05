@@ -19,10 +19,21 @@ function flip_card_object(picture_name) {
   this.paragraph.innerHTML = "???"
   this.front.appendChild(this.paragraph);
   this.picture_name = picture_name
+  this.flipped = 0
 
   this.changed = function() {
-    this.paragraph.innerHTML = this.picture_name
-    new ExitButton("Next Card!")
+    if (this.flipped == 0) {
+      flip_card = document.getElementsByClassName('flip-card')[0]
+      flip_card.classList.toggle("flipped")
+      setTimeout(function(){ flip_card.classList.toggle("flipped") }, 500);
+      this.flipped = 1
+    }
+    else if (this.flipped == 1) {
+      this.paragraph.innerHTML = this.picture_name
+      this.flipped = 2
+      new ExitButton("Next Card!")
+  }
+
   }
   document.addEventListener("keydown", this.changed.bind(this));
 }
@@ -35,7 +46,6 @@ function initiate () {
   } else {
     words = words2
   }
-
 
   var wordlist = shuffle(words)
   new flip_card_object(wordlist[0])
