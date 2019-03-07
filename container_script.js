@@ -1,15 +1,5 @@
 var top_nav = document.getElementById("top_nav")
 
-function add_top_nav_button(label, id_tag) {
-  top_nav_button = document.createElement("button")
-  top_nav_button.innerHTML = label
-  top_nav_button.id = id_tag;
-
-  top_nav.appendChild(top_nav_button);
-
-  return top_nav_button
-}
-
 var parameters = location.search.split("?")[1]
 var selector = document.createElement("select");
 top_nav.appendChild(selector);
@@ -27,45 +17,28 @@ if (parameters != undefined) {
   selector.value = "week1"
 }
 
-var home = add_top_nav_button("Home", "home")
-var sentences = add_top_nav_button("Match Sentences", "sentences")
-var pictures = add_top_nav_button("Match Pictures", "pictures")
-var flying_pictures = add_top_nav_button("Flying Pictures", "flying_pictures")
-var flip_cards = add_top_nav_button("Flip Cards", "flip_cards")
-var shuffle_letters = add_top_nav_button("Shuffle Letters", "shuffle_letters")
+function TopNavButton(label, id_tag) {
+  this.label = label
+  this.id_tag = id_tag
+  this.owner = document.getElementById("top_nav")
 
-sentences.addEventListener('click', go_to_sentences, false);
-function go_to_sentences() {
-  var selected = selector.value
-	window.location.assign("sentences.html?"+selected);
+  this.my_button = document.createElement("button")
+  this.my_button.innerHTML = label
+  this.my_button.id = id_tag;
+  this.owner.appendChild(this.my_button);
+  this.selector = selector
+
+  this.clicked = function() {
+    var address =  this.id_tag + ".html?" + this.selector.value
+  	window.location.assign(address);
+  }
+  this.my_button.addEventListener('click', this.clicked.bind(this));
 }
 
-pictures.addEventListener('click', go_to_pictures, false);
-function go_to_pictures() {
-  var selected = selector.value
-	window.location.assign("pictures.html?"+selected);
-}
-
-home.addEventListener('click', go_to_home, false);
-function go_to_home() {
-  var selected = selector.value
-	window.location.assign("index.html");
-}
-
-flying_pictures.addEventListener('click', go_to_flying_pictures, false);
-function go_to_flying_pictures() {
-  var selected = selector.value
-	window.location.assign("flying_pictures.html?"+selected);
-}
-
-flip_cards.addEventListener('click', go_to_flip_cards, false);
-function go_to_flip_cards() {
-  var selected = selector.value
-	window.location.assign("flip_cards.html?"+selected);
-}
-
-shuffle_letters.addEventListener('click', go_to_shuffle_letters, false);
-function go_to_shuffle_letters() {
-  var selected = selector.value
-	window.location.assign("shuffle_letters.html?"+selected);
-}
+new TopNavButton("Home", "index")
+new TopNavButton("Match Sentences", "sentences")
+new TopNavButton("Match Pictures", "pictures")
+new TopNavButton("Flying Pictures", "flying_pictures")
+new TopNavButton("Flip Cards", "flip_cards")
+new TopNavButton("Shuffle Letters", "shuffle_letters")
+new TopNavButton("Picture Reveal", "picture_reveal")

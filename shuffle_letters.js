@@ -30,7 +30,8 @@ function initiate () {
     }
   }
 
-  new AnswerRevealButton(answer)
+  my_answer = "<i>" + answer.toUpperCase() + "</i>"
+  new AnswerRevealButton(my_answer + "<br>" + "Next Page!")
 
 }
 

@@ -5,7 +5,6 @@ var parameters = location.search.split("?")[1]
 console.log(parameters)
 
 var body = document.getElementById("body");
-var all_buttons = []
 
 function FlyingCard (answer) {
   this.answer = answer
@@ -31,14 +30,14 @@ function FlyingCard (answer) {
       this.moved = 1
     }
     else if (this.moved == 1) {
-      this.paragraph.innerHTML = this.answer
+      this.paragraph.innerHTML = ""
       this.moved = 2
-      new ExitButton("Next Card!")
+      my_answer = "<i>" + this.answer.toUpperCase() + "</i>"
+      new ExitButton(my_answer + "<br>" + "Next Card!")
   }
 
   }
   document.addEventListener("keydown", this.changed.bind(this));
-
 }
 
 function initiate () {
