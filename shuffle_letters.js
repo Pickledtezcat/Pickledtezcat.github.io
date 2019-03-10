@@ -1,6 +1,10 @@
 var menu_button = document.getElementById("shuffle_letters")
 menu_button.classList.add("active");
 
+
+console.log(saved_data)
+console.log(image_names)
+
 var parameters = location.search.split("?")[1]
 
 var body = document.getElementById("body");

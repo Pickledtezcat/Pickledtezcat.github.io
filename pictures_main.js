@@ -2,20 +2,23 @@ var menu_button = document.getElementById("pictures")
 menu_button.classList.add("active");
 
 var parameters = location.search.split("?")[1]
-console.log(parameters)
 
 var body = document.getElementById("body");
 var all_buttons = []
 
 function initiate () {
+
   var words1 = ["museum", "biggest", "oldest", "find"]
-  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
+  var words = []
+
   if (parameters == "week1") {
     words = words1
   } else {
-    words = words2
+    words = get_words(parameters)
+    words = check_valid_pictures(words)
   }
 
+  console.log("final words", words)
 
   var wordlist = shuffle(words)
   var selected_words = []
@@ -23,13 +26,12 @@ function initiate () {
   for(var i = 0; i < 3; ++i) {
     selected_words.push(wordlist[i])
   }
-  console.log(selected_words)
 
   var picture_name = selected_words[0]
   selected_words = shuffle(selected_words)
 
   var picture = document.createElement("IMG")
-  picture.src = "pictures/" + picture_name + ".jpg"
+  picture.src = "pictures/" + picture_name + "_1.png"
 
   document.getElementById("picture").appendChild(picture)
 

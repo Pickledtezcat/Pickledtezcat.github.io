@@ -1,0 +1,1 @@
+saved_data ={"January": {"sentences": ["I bought some chicken.", "I don't want cheese.", "The bread is ten dollars."], "target_language": ["I like $.", "I don't like $."], "words": ["Cheese", "Chicken", "Pizza", "Oranges", "Jelly", "Bread", "Steak", "Spaghetti", "Trousers"]}, "week1": {"sentences": [], "target_language": [], "words": []}}

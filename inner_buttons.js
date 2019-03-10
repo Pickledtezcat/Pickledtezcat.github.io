@@ -19,6 +19,29 @@ var shuffle = function (list) {
 	return list;
 };
 
+function get_words(word_key) {
+  var all_words = saved_data[word_key]["words"]
+
+  var changed_words = []
+  for (var i = 0; i < all_words.length; ++i) {
+    changed_words.push(all_words[i].toLowerCase())
+  }
+  return changed_words
+}
+
+function check_valid_pictures(list) {
+  all_images = image_names["images"]
+  console.log(all_images)
+
+  var valid_words = []
+  for (var i = 0; i < list.length; ++i) {
+    if (image_names["images"].includes(list[i].toLowerCase())) {
+      valid_words.push(list[i])
+    }
+  }
+  return valid_words
+}
+
 function LetterButton(letter) {
   this.my_button = document.createElement("button");
   this.contents = letter;
