@@ -22,7 +22,7 @@ function TileArray(answer) {
   this.count = 0
 
   this.picture = document.createElement("IMG")
-  this.picture.src = "pictures/" + answer + ".jpg"
+  this.picture.src = "pictures/" + answer + "_1.png"
   this.frame.appendChild(this.picture);
   this.picture.id = "fading_image"
 
@@ -87,16 +87,16 @@ function RevealTile(x, y, owner) {
 }
 
 function initiate () {
-  var words1 = ["museum", "biggest", "oldest", "find"]
-  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
+  var words1 = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
   if (parameters == "week1") {
     words = words1
   } else {
-    words = words2
+    words = get_words(parameters)
   }
 
   var wordlist = shuffle(words)
   var answer = wordlist[0]
+  push_storage(answer)
 
   new TileArray(answer)
 

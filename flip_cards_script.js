@@ -12,7 +12,7 @@ function flip_card_object(picture_name) {
   this.back = document.getElementById("flip_card_back");
 
   this.picture = document.createElement("IMG")
-  this.picture.src = "pictures/" + picture_name + ".jpg"
+  this.picture.src = "pictures/" + picture_name + "_1.png"
   this.back.appendChild(this.picture);
 
   this.paragraph = document.createElement("P")
@@ -39,16 +39,18 @@ function flip_card_object(picture_name) {
 }
 
 function initiate () {
-  var words1 = ["museum", "biggest", "oldest", "find"]
-  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
+  var words1 = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
   if (parameters == "week1") {
     words = words1
   } else {
-    words = words2
+    words = get_words(parameters)
   }
 
   var wordlist = shuffle(words)
-  new flip_card_object(wordlist[0])
+  answer = wordlist[0]
+  push_storage(answer)
+
+  new flip_card_object(answer)
 
 }
 

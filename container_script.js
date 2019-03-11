@@ -1,6 +1,12 @@
 var top_nav = document.getElementById("top_nav")
 
+if (sessionStorage.getItem("word_list") == null) {
+  sessionStorage.word_list = ""
+}
 
+if (sessionStorage.getItem("sentence_list") == null) {
+  sessionStorage.sentence_list = ""
+}
 
 var parameters = location.search.split("?")[1]
 var selector = document.createElement("select");

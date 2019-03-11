@@ -19,19 +19,80 @@ var shuffle = function (list) {
 	return list;
 };
 
-function get_words(word_key) {
-  var all_words = saved_data[word_key]["words"]
+function unused_words(all_words) {
 
   var changed_words = []
   for (var i = 0; i < all_words.length; ++i) {
-    changed_words.push(all_words[i].toLowerCase())
+    var check_word = all_words[i].toLowerCase()
+    var word_list = sessionStorage.word_list.split("&")
+
+    if (! word_list.includes(check_word)) {
+      changed_words.push(check_word)
+    }
   }
   return changed_words
 }
 
+function get_words(word_key) {
+  var present_words = get_all_words(word_key)
+  var valid_words = unused_words(present_words)
+  if (valid_words.length == 0) {
+    sessionStorage.word_list = ""
+    valid_words = unused_words(present_words)
+  }
+
+  return valid_words
+}
+
+function get_all_words(word_key) {
+  var all_words = saved_data[word_key]["words"]
+  var present_words = check_valid_pictures(all_words)
+  return present_words
+}
+
+
+function unused_sentences(all_sentences) {
+
+  var collected_sentences = []
+  for (var i = 0; i < all_sentences.length; ++i) {
+    var check_sentence = all_sentences[i]
+    var sentence_list = sessionStorage.sentence_list.split("&")
+
+    if (! sentence_list.includes(check_sentence)) {
+      collected_sentences.push(check_sentence)
+    }
+  }
+  return collected_sentences
+}
+
+function get_sentences(sentence_key) {
+
+  var all_sentences = saved_data[sentence_key]["sentences"]
+
+  var valid_sentences = unused_sentences(all_sentences)
+  console.log("all", all_sentences, valid_sentences, sessionStorage.sentence_list)
+
+
+  if (valid_sentences.length == 0) {
+    sessionStorage.sentence_list = ""
+    valid_sentences = unused_words(all_sentences)
+  }
+
+  return valid_sentences
+}
+
+function push_storage(word) {
+  var store = "&" + word
+  sessionStorage.word_list += store
+}
+
+function push_storage_sentence(word) {
+  var store = "&" + word
+  sessionStorage.sentence_list += store
+}
+
 function check_valid_pictures(list) {
-  all_images = image_names["images"]
-  console.log(all_images)
+  var all_images = image_names["images"]
 
   var valid_words = []
   for (var i = 0; i < list.length; ++i) {

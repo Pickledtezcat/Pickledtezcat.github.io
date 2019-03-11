@@ -6,8 +6,16 @@ var parameters = location.search.split("?")[1]
 var body = document.getElementById("body");
 var check_index = 0
 
+
+
 var sentences = ["Add the salt to the soup.", "Set the temperature to 200c."
 , "Open the oven door.", "Remove the bread from the oven."]
+
+if (parameters == "week1") {
+  sentences = sentences
+} else {
+  sentences = get_sentences(parameters)
+}
 
 var button_list = []
 var added_list = []
@@ -15,6 +23,8 @@ var added_list = []
 // use paramters to set word or sentence lists
 
 var original_text = pick_random(sentences)
+push_storage_sentence(original_text)
+
 var original_list = shuffle(original_text.split(" "));
 
 function initiate() {
@@ -47,7 +57,6 @@ function update_all (){
     }
 
   test_text = text_list.join(" ")
-  console.info(test_text)
 
   if (test_text == original_text) {
     for (var i = 0; i < button_list.length; ++i) {

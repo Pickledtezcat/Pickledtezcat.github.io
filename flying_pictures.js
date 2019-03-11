@@ -13,7 +13,7 @@ function FlyingCard (answer) {
   this.paragraph.id = "answer"
   this.paragraph.innerHTML = "???"
   this.card = document.createElement("IMG")
-  this.card.src = "pictures/" + answer + ".jpg"
+  this.card.src = "pictures/" + answer + "_1.png"
   this.card.id = "flying_picture"
   this.owner.appendChild(this.paragraph)
   this.owner.appendChild(this.card)
@@ -41,17 +41,16 @@ function FlyingCard (answer) {
 }
 
 function initiate () {
-  var words1 = ["museum", "biggest", "oldest", "find"]
-  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
+  var words1 = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
   if (parameters == "week1") {
     words = words1
   } else {
-    words = words2
+    words = get_words(parameters)
   }
-
 
   var wordlist = shuffle(words)
   var answer = wordlist[0]
+  push_storage(answer)
 
   new FlyingCard(answer)
 

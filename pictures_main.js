@@ -8,17 +8,16 @@ var all_buttons = []
 
 function initiate () {
 
-  var words1 = ["museum", "biggest", "oldest", "find"]
+  var words1 = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
   var words = []
+  var all_words = shuffle(get_all_words(parameters))
 
   if (parameters == "week1") {
     words = words1
   } else {
     words = get_words(parameters)
-    words = check_valid_pictures(words)
-  }
 
-  console.log("final words", words)
+  }
 
   var wordlist = shuffle(words)
   var selected_words = []
@@ -28,6 +27,8 @@ function initiate () {
   }
 
   var picture_name = selected_words[0]
+  push_storage(picture_name)
+
   selected_words = shuffle(selected_words)
 
   var picture = document.createElement("IMG")
@@ -36,8 +37,14 @@ function initiate () {
   document.getElementById("picture").appendChild(picture)
 
   for (var i = 0; i < selected_words.length; ++i) {
-    var correct = selected_words[i] == picture_name
-    var option = new InteractiveButton(selected_words[i], correct)
+    var current_word = selected_words[i]
+
+    if (selected_words[i] == undefined) {
+      current_word = all_words[i]
+    }
+
+    var correct = current_word == picture_name
+    var option = new InteractiveButton(current_word, correct)
     all_buttons.push(option)
   }
 
