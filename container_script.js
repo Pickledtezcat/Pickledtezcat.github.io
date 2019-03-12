@@ -8,7 +8,6 @@ if (sessionStorage.getItem("sentence_list") == null) {
   sessionStorage.sentence_list = ""
 }
 
-console.log(location.search)
 var parameters = location.search.split("?")[1]
 var selector = document.createElement("select");
 selector.id = "top_nav_selector"
@@ -24,12 +23,6 @@ for(var i = 0; i < keys.length;i++){
 }
 
 console.log("paramters:", parameters)
-
-if (parameters != undefined && parameters != "") {
-  selector.value = parameters
-} else {
-  selector.value = "week1"
-}
 
 function TopNavButton(label, id_tag) {
   this.label = label
