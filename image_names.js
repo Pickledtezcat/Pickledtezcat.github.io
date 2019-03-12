@@ -1,1 +1,1 @@
-var image_names ={"images": ["answers", "biggest", "bread", "bread", "cheese", "chicken", "find", "longest", "museum", "oldest", "pizza", "pizza", "quiz", "search", "spaghetti", "spaghetti", "steak", "steak", "virtual reality"]}
+window.image_names ={"images": ["answers", "biggest", "bread", "bread", "cheese", "chicken", "find", "longest", "museum", "oldest", "pizza", "pizza", "quiz", "search", "spaghetti", "spaghetti", "steak", "steak", "virtual reality"]}
