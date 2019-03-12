@@ -109,7 +109,7 @@ function check_valid_pictures(list) {
   var valid_words = []
   for (var i = 0; i < list.length; ++i) {
     var check_picture = list[i].toLowerCase()
-    if has_contains(all_images, check_picture) {
+    if (has_contains(all_images, check_picture)) {
       valid_words.push(list[i])
     }
   }
