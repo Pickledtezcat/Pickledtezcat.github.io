@@ -45,7 +45,7 @@ function get_words(word_key) {
 }
 
 function get_all_words(word_key) {
-  var all_words = saved_data[word_key]["words"]
+  var all_words = window.saved_data[word_key]["words"]
   var present_words = check_valid_pictures(all_words)
   return present_words
 }
@@ -67,7 +67,7 @@ function unused_sentences(all_sentences) {
 
 function get_sentences(sentence_key) {
 
-  var all_sentences = saved_data[sentence_key]["sentences"]
+  var all_sentences = window.saved_data[sentence_key]["sentences"]
 
   var valid_sentences = unused_sentences(all_sentences)
   console.log("all", all_sentences, valid_sentences, sessionStorage.sentence_list)
@@ -92,11 +92,11 @@ function push_storage_sentence(word) {
 }
 
 function check_valid_pictures(list) {
-  var all_images = image_names["images"]
+  var all_images = window.image_names["images"]
 
   var valid_words = []
   for (var i = 0; i < list.length; ++i) {
-    if (image_names["images"].includes(list[i].toLowerCase())) {
+    if (all_images.includes(list[i].toLowerCase())) {
       valid_words.push(list[i])
     }
   }
