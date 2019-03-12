@@ -26,7 +26,7 @@ function unused_words(all_words) {
     var check_word = all_words[i].toLowerCase()
     var word_list = sessionStorage.word_list.split("&")
 
-    if (! word_list.includes(check_word)) {
+    if (! has_contains(word_list, check_word)) {
       changed_words.push(check_word)
     }
   }
@@ -50,6 +50,17 @@ function get_all_words(word_key) {
   return present_words
 }
 
+function has_contains(check_list, search_term) {
+  var is_in = false
+  for (var i = 0; i < check_list.length; ++i) {
+    check_index = check_list[i]
+    if (check_index == search_term) {
+      is_in = true
+    }
+  }
+  return is_in
+}
+
 
 function unused_sentences(all_sentences) {
 
@@ -58,7 +69,7 @@ function unused_sentences(all_sentences) {
     var check_sentence = all_sentences[i]
     var sentence_list = sessionStorage.sentence_list.split("&")
     if (sentence_list != []) {
-      if (! sentence_list.includes(check_sentence)) {
+      if (! has_contains(sentence_list, check_sentence) ) {
         collected_sentences.push(check_sentence)
       }
     }
