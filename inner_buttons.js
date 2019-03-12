@@ -57,9 +57,10 @@ function unused_sentences(all_sentences) {
   for (var i = 0; i < all_sentences.length; ++i) {
     var check_sentence = all_sentences[i]
     var sentence_list = sessionStorage.sentence_list.split("&")
-
-    if (! sentence_list.includes(check_sentence)) {
-      collected_sentences.push(check_sentence)
+    if (sentence_list != []) {
+      if (! sentence_list.includes(check_sentence)) {
+        collected_sentences.push(check_sentence)
+      }
     }
   }
   return collected_sentences
