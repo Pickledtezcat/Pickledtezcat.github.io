@@ -53,8 +53,8 @@ function get_all_words(word_key) {
 function has_contains(check_list, search_term) {
   var is_in = false
   for (var i = 0; i < check_list.length; ++i) {
-    check_index = check_list[i]
-    if (check_index == search_term) {
+    var check_item = check_list[i]
+    if (check_item == search_term) {
       is_in = true
     }
   }
@@ -157,8 +157,8 @@ function WordListButton(word) {
   this.owner.appendChild(this.my_button);
   this.my_button.innerHTML = word;
   this.added = false
-  this.index = check_index
-  check_index += 1
+  this.index = window.check_index
+  window.check_index += 1
 
   this.changed = function() {
     if (this.added != true) {
@@ -176,8 +176,8 @@ function WordListButton(word) {
 
   this.add = function() {
     this.added = true;
-    this.index = check_index
-    check_index += 1
+    this.index = window.check_index
+    window.check_index += 1
     this.owner = document.getElementById("second_list");
     this.owner.appendChild(this.my_button);
   }

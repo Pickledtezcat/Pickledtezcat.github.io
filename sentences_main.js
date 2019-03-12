@@ -4,9 +4,7 @@ menu_button.classList.add("active");
 var parameters = location.search.split("?")[1]
 
 var body = document.getElementById("body");
-var check_index = 0
-
-
+window.check_index = 0
 
 var sentences = ["Add the salt to the soup.", "Set the temperature to 200c."
 , "Open the oven door.", "Remove the bread from the oven."]

@@ -79,12 +79,16 @@ body {
   border-radius: 12px;
   padding: 3px 3px;
   margin: 14px 16px;
+  position: fixed;
+  width: 8vw;
   overflow: hidden;
-  font-size: 1.0em;
+  font-size: 0.6em;
+  float: right;
+  right: 1vw;
 }
 
 .topnav select {
-  float: right;
+  min-width: 6vw;
   font-size: 2.0em;
 }
 
@@ -95,6 +99,7 @@ body {
   transition-duration: 0.4s;
   float: left;
   color: white;
+  min-width: 8vw;
   text-align: center;
   padding: 4px 12px;
   font-size: 2.0em;
