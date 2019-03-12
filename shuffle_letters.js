@@ -1,27 +1,24 @@
 var menu_button = document.getElementById("shuffle_letters")
 menu_button.classList.add("active");
 
-
-console.log(saved_data)
-console.log(image_names)
-
 var parameters = location.search.split("?")[1]
 
 var body = document.getElementById("body");
 
 
 function initiate () {
-  var words1 = ["museum", "biggest", "oldest", "find"]
-  var words2 = ["search", "answers", "quiz", "virtual reality", "longest"]
-  if (parameters == "week1") {
+  var words1 = ["museum", "biggest", "oldest", "find", "search", "answers", "quiz", "virtual reality", "longest"]
+  if (parameters == "week1" || parameters == "") {
     words = words1
   } else {
-    words = words2
+    words = get_words(parameters)
   }
 
 
   var wordlist = shuffle(words)
   var answer = wordlist[0]
+  push_storage(answer)
+  
   var letters = answer.split("")
   var letters = shuffle(letters)
   var letters = shuffle(letters)

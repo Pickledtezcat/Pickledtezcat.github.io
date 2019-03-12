@@ -23,7 +23,9 @@ for(var i = 0; i < keys.length;i++){
   selector.add(this_option)
 }
 
-if (parameters != undefined) {
+console.log("paramters:", parameters)
+
+if (parameters != undefined && parameters != "") {
   selector.value = parameters
 } else {
   selector.value = "week1"
@@ -39,7 +41,6 @@ function TopNavButton(label, id_tag) {
   this.my_button.id = id_tag;
   this.owner.appendChild(this.my_button);
   this.selector = document.getElementById("top_nav_selector")
-  console.log(this.selector.value)
 
   this.clicked = function() {
     var address =  this.id_tag + ".html?" + this.selector.value

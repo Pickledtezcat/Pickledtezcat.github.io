@@ -16,7 +16,6 @@ function initiate () {
     words = words1
   } else {
     words = get_words(parameters)
-
   }
 
   var wordlist = shuffle(words)
