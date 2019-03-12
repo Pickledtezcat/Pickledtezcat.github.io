@@ -8,6 +8,7 @@ if (sessionStorage.getItem("sentence_list") == null) {
   sessionStorage.sentence_list = ""
 }
 
+console.log(location.search)
 var parameters = location.search.split("?")[1]
 var selector = document.createElement("select");
 top_nav.appendChild(selector);
