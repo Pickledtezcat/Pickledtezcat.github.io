@@ -12,7 +12,7 @@ function initiate () {
   var words = []
   var all_words = shuffle(get_all_words(parameters))
 
-  if (parameters == "week1") {
+  if (parameters == "week1" || parameters == "") {
     words = words1
   } else {
     words = get_words(parameters)

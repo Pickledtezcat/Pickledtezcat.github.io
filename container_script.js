@@ -11,6 +11,7 @@ if (sessionStorage.getItem("sentence_list") == null) {
 console.log(location.search)
 var parameters = location.search.split("?")[1]
 var selector = document.createElement("select");
+selector.id = "top_nav_selector"
 top_nav.appendChild(selector);
 
 var keys = Object.keys(saved_data);
@@ -37,7 +38,8 @@ function TopNavButton(label, id_tag) {
   this.my_button.innerHTML = label
   this.my_button.id = id_tag;
   this.owner.appendChild(this.my_button);
-  this.selector = selector
+  this.selector = document.getElementById("top_nav_selector")
+  console.log(this.selector.value)
 
   this.clicked = function() {
     var address =  this.id_tag + ".html?" + this.selector.value
