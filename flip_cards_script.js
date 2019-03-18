@@ -12,7 +12,8 @@ function flip_card_object(picture_name) {
   this.back = document.getElementById("flip_card_back");
 
   this.picture = document.createElement("IMG")
-  this.picture.src = "pictures/" + picture_name + "_1.jpeg"
+
+  this.picture.src = get_image_name(picture_name)
   this.back.appendChild(this.picture);
 
   this.paragraph = document.createElement("P")

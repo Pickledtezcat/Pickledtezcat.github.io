@@ -103,6 +103,29 @@ function push_storage_sentence(word) {
   sessionStorage.sentence_list += store
 }
 
+function get_image_count(image_name) {
+  var all_images = window.image_names["images"]
+
+  var image_count = 0
+
+  for (var i = 0; i < all_images.length; ++i) {
+    var check_picture = all_images[i].toLowerCase()
+    if (check_picture == image_name) {
+      image_count += 1
+    }
+  }
+
+  return image_count
+}
+
+function get_image_name(image_name) {
+  var max_count = get_image_count(image_name)
+  max_count = Math.floor(max_count * Math.random()) + 1
+
+  var image_file = "pictures/" + image_name + "_" + max_count + ".jpeg"
+  return image_file
+}
+
 function check_valid_pictures(list) {
   var all_images = window.image_names["images"]
 

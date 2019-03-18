@@ -31,7 +31,7 @@ function initiate () {
   selected_words = shuffle(selected_words)
 
   var picture = document.createElement("IMG")
-  picture.src = "pictures/" + picture_name + "_1.jpeg"
+  picture.src = get_image_name(picture_name)
 
   document.getElementById("picture").appendChild(picture)
 
