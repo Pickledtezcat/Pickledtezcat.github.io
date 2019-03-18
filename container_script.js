@@ -9,6 +9,7 @@ if (sessionStorage.getItem("sentence_list") == null) {
 }
 
 var parameters = location.search.split("?")[1]
+console.log(parameters)
 
 function TopNavSelector() {
 

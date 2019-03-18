@@ -22,7 +22,7 @@ function TileArray(answer) {
   this.count = 0
 
   this.picture = document.createElement("IMG")
-  this.picture.src = "pictures/" + answer + "_1.png"
+  this.picture.src = "pictures/" + answer + "_1.jpeg"
   this.frame.appendChild(this.picture);
   this.picture.id = "fading_image"
 

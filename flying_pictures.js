@@ -13,7 +13,7 @@ function FlyingCard (answer) {
   this.paragraph.id = "answer"
   this.paragraph.innerHTML = "???"
   this.card = document.createElement("IMG")
-  this.card.src = "pictures/" + answer + "_1.png"
+  this.card.src = "pictures/" + answer + "_1.jpeg"
   this.card.id = "flying_picture"
   this.owner.appendChild(this.paragraph)
   this.owner.appendChild(this.card)
