@@ -15,14 +15,13 @@ body {
 .inside img {
   margin: auto;
   max-height: 60vh;
-  min-width: 40vw;
-  min-height: 30vh;
+  min-height: 40vh;
   box-shadow: 0 6px 16px 0 rgba(0,0,0.4,0.2);
 }
 
 #picture {
   overflow: hidden;
-  min-height: 20vh;
+  min-height: 40vh;
   width: 100%;
   height: 100%;
   left: 0%;
@@ -119,7 +118,7 @@ body {
   height: 600px;
   position: fixed;
   left: -2000px;
-  bottom: 300px;
+  bottom: 200px;
   z-index: 10;
 }
 
@@ -147,7 +146,7 @@ body {
   animation-name: flying_left;
   animation-duration:1.5s;
   left:2000px;
-  bottom:300px;
+  bottom:200px;
 }
 
 #answer {
@@ -158,7 +157,7 @@ body {
   animation-name: flying_right;
   animation-duration: 1.5s;
   left:-2000px;
-  bottom:300px;
+  bottom:200px;
 }
 
 #flying_picture.up {
