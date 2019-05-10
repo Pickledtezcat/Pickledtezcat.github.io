@@ -36,6 +36,10 @@ body {
   min-height: 33vh;
 }
 
+.fit {
+  height: 600px;
+}
+
 .inside {
   font-size: 2.0em;
 }
